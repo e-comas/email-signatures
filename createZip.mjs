@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 import { execFileSync } from "child_process";
+import { statSync } from "fs";
 import { createInterface } from "readline";
 
 const [, , template, pictureFile] = process.argv;
 
 if (!template?.endsWith(".html")) {
   throw new Error("Please provide a .html file as first parameter");
+}
+
+const { size } = statSync(pictureFile);
+if (size > 16 << 10) {
+  throw new Error(`Picture file is too big (expected ≤16 kiB, got ${size})`);
 }
 
 const pictureInfo = execFileSync("/usr/bin/file", [pictureFile]).toString(
