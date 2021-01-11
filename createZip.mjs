@@ -33,8 +33,8 @@ if (IMG_HEIGHT !== 210) {
 const info = ["Name", "Title", "Mail", "Phone", "LinkedIn"];
 
 const replacements = {
-  IMG_HEIGHT,
-  IMG_WIDTH,
+  IMG_HEIGHT: 105,
+  IMG_WIDTH: IMG_WIDTH / 2,
 };
 
 let surname;
