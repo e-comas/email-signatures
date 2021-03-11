@@ -37,6 +37,8 @@ const replacements = {
   IMG_WIDTH: IMG_WIDTH / 2,
 };
 
+console.error("Paste in the filled up template and end with Ctrl+D:");
+
 let surname;
 for await (const line of createInterface({ input: process.stdin })) {
   if (!surname) {
@@ -59,7 +61,7 @@ process.stdout.write(`mv "${pictureFile}" ${surname}.jpg\n`);
 process.stdout.write(
   `sed '${Object.entries(replacements)
     .map(([search, replace]) => `s|{{ ${search} }}|${replace}|g`)
-    .join(";")}' < ${template} > ${surname}.html\n`
+    .join(";")}' ${template} > ${surname}.html\n`
 );
 process.stdout.write(`zip ${surname}.zip ${surname}.html ${surname}.jpg\n`);
 process.stdout.write(`echo "Zipped as ${surname}.zip"\n`);
