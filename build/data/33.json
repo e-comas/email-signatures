@@ -1,0 +1,1 @@
+[{"leadingDigits":"8","format":"$1 $2 $3 $4","pattern":"(\\d{3})(\\d{2})(\\d{2})(\\d{2})"},{"leadingDigits":"[1-79]","format":"$1 $2 $3 $4 $5","pattern":"(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})"}]

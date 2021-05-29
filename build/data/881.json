@@ -1,0 +1,1 @@
+[{"leadingDigits":"[0-36-9]","format":"$1 $2 $3","pattern":"(\\d)(\\d{3})(\\d{5})"}]

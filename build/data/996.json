@@ -1,0 +1,1 @@
+[{"leadingDigits":"3(?:1[346]|[24-79])","format":"$1 $2","pattern":"(\\d{4})(\\d{5})"},{"leadingDigits":"[235-79]|88","format":"$1 $2 $3","pattern":"(\\d{3})(\\d{3})(\\d{3})"},{"leadingDigits":"8","format":"$1 $2 $3 $4","pattern":"(\\d{3})(\\d{3})(\\d)(\\d{2,3})"}]

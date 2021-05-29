@@ -1,0 +1,1 @@
+[{"leadingDigits":"21|7","format":"$1 $2 $3","pattern":"(\\d{2})(\\d{4})(\\d{4})"},{"leadingDigits":"2(?:2|3[2-57-9]|4[2-469]|5[2-59]|6[2-9]|7[2-69]|8[2-49])|5","format":"$1 $2","pattern":"(\\d{4})(\\d{6})"},{"leadingDigits":"[2689]","format":"$1 $2 $3","pattern":"(\\d{3})(\\d{3})(\\d{4})"},{"leadingDigits":"8","format":"$1 $2 $3","pattern":"(\\d{3})(\\d{3})(\\d{5})"}]

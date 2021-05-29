@@ -1,0 +1,1 @@
+[{"leadingDigits":"96","format":"$1","pattern":"(\\d{4,5})"},{"leadingDigits":"(?:1[137]|2[13-68]|3[1458]|4[145]|5[1468]|6[16]|7[1467]|8[13467])[12689]","format":"$1 $2","pattern":"(\\d{2})(\\d{4,5})"},{"leadingDigits":"9","format":"$1 $2 $3","pattern":"(\\d{3})(\\d{3})(\\d{3,4})"},{"leadingDigits":"[1-8]","format":"$1 $2 $3","pattern":"(\\d{2})(\\d{4})(\\d{4})"}]

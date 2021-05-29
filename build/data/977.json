@@ -1,0 +1,1 @@
+[{"leadingDigits":"1[2-6]","format":"$1-$2","pattern":"(\\d)(\\d{7})"},{"leadingDigits":"1[01]|[2-8]|9(?:[1-579]|6[2-6])","format":"$1-$2","pattern":"(\\d{2})(\\d{6})"},{"leadingDigits":"9","format":"$1-$2","pattern":"(\\d{3})(\\d{7})"}]

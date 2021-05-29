@@ -1,0 +1,1 @@
+[{"leadingDigits":"[2568][1-8]|3(?:0[1-9]|[1-9])|9","format":"$1 $2","pattern":"(\\d)(\\d{4,9})"},{"leadingDigits":"[12]00|[368]|70[07-9]","format":"$1 $2","pattern":"(\\d{3})(\\d{3,7})"},{"leadingDigits":"[1245]|7[135]","format":"$1 $2","pattern":"(\\d{2})(\\d{4,8})"},{"leadingDigits":"7","format":"$1 $2","pattern":"(\\d{2})(\\d{6,10})"}]

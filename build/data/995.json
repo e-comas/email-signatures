@@ -1,0 +1,1 @@
+[{"leadingDigits":"70","format":"$1 $2 $3","pattern":"(\\d{3})(\\d{3})(\\d{3})"},{"leadingDigits":"32","format":"$1 $2 $3 $4","pattern":"(\\d{2})(\\d{3})(\\d{2})(\\d{2})"},{"leadingDigits":"[57]","format":"$1 $2 $3 $4","pattern":"(\\d{3})(\\d{2})(\\d{2})(\\d{2})"},{"leadingDigits":"[348]","format":"$1 $2 $3 $4","pattern":"(\\d{3})(\\d{2})(\\d{2})(\\d{2})"}]

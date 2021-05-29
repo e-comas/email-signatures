@@ -1,0 +1,1 @@
+[{"leadingDigits":"331","format":"$1 $2 $3","pattern":"(\\d{6})(\\d)(\\d{2})"},{"leadingDigits":"[34]7|91[78]","format":"$1 $2 $3","pattern":"(\\d{3})(\\d{2})(\\d{4})"},{"leadingDigits":"3[1-5]","format":"$1 $2 $3","pattern":"(\\d{4})(\\d)(\\d{4})"},{"leadingDigits":"[02-57-9]|11","format":"$1 $2 $3","pattern":"(\\d{2})(\\d{3})(\\d{4})"}]

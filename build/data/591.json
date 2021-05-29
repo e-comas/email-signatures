@@ -1,0 +1,1 @@
+[{"leadingDigits":"[23]|4[46]","format":"$1 $2","pattern":"(\\d)(\\d{7})"},{"leadingDigits":"[67]","format":"$1","pattern":"(\\d{8})"},{"leadingDigits":"8","format":"$1 $2 $3","pattern":"(\\d{3})(\\d{2})(\\d{4})"}]
