@@ -117,7 +117,10 @@
       }
     }
     if (userData.newUser) {
-      formData.pictureUrl = `${CDN}/${email.substring(0, email.indexOf("@"))}`;
+      formData.pictureUrl = `${CDN}/${email.substring(
+        0,
+        email.indexOf("@")
+      )}.jpg`;
       userData.newUser = false;
       const text = [...stringifyUser(email, formData)].join("\n");
       requests.push({
