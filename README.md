@@ -8,3 +8,9 @@ Internal tool to generate email signature.
 yarn
 yarn dev
 ```
+
+### Publish
+
+```sh
+yarn deploy
+```
