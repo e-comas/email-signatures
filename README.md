@@ -1,6 +1,12 @@
 # e-Comas Email Signature Tool
 
-Internal tool to generate email signature.
+Tool to generate email signature using e-Comas template. It's meant for internal
+use only.
+
+[[https://e-comas.github.io/email-signatures/]]
+
+Disclamer: This tool uses Google Docs as its database, please use an actual
+database management system if you can.
 
 ### Development
 
