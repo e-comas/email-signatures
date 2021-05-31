@@ -63,12 +63,15 @@
         : []
     );
 
+  function parseTOMLGDoc(gDocData) {
+    return TOML.parse(gDocData.result.body.content.map(exploreGDoc).join("\n"));
+  }
   function exploreGDoc(content) {
     if (!content || typeof content !== "object") return;
 
     if (content.content) return content.content;
 
-    return Object.values(content).map(exploreGDoc).join("\n");
+    return Object.values(content).map(exploreGDoc).join("");
   }
 
   let loadUserData = Promise.all([
@@ -78,14 +81,13 @@
       ? Promise.resolve({ result: { email: location.hash.slice(1) } })
       : gapi.client.request({ method: "GET", path: "/userinfo/v2/me" }),
   ]).then(([_, data, userData]) => [
-    TOML.parse(exploreGDoc(data.result.body.content))[
-      userData.result.email
-    ] ?? {
+    parseTOMLGDoc(data)[userData.result.email] ?? {
       Name: userData.result.name,
       newUser: true,
     },
     userData.result.email,
   ]);
+  loadUserData.catch(console.error);
 
   window.addEventListener("hashchange", () => {
     if (location.hash.includes("@")) {
@@ -93,7 +95,7 @@
       loadUserData = gapi.client.docs.documents
         .get({ documentId })
         .then((data) => [
-          TOML.parse(exploreGDoc(data.result.body.content))[email] ?? {
+          parseTOMLGDoc(data)[email] ?? {
             newUser: true,
           },
           email,
@@ -230,7 +232,9 @@
   <p style="color: red">
     {error
       ? error.message ||
-        `${error.result.error.code} ${error.result.error.status}: ${error.result.error.message}`
+        (error.result
+          ? `${error.result.error.code} ${error.result.error.status}: ${error.result.error.message}`
+          : error)
       : "Unknown error"}
   </p>
 {/await}
