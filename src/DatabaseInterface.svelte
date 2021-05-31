@@ -5,9 +5,10 @@
   import Form from "./Form.svelte";
   import Preview from "./Template.svelte";
   import ClipboardHandler from "./ClipboardHandler.svelte";
+  import gAPIData from "./gAPICredentials.json";
 
   const CDN = "https://www.e-comas.com/docs/signatures/ressources";
-  const documentId = "1YrdCY5heoUS2eLGvU8-YsIspk9ez42glfd-hWRUxo2Q";
+  const { documentId } = gAPIData;
 
   function* stringifySubTable(subTableName: string, subTable: any) {
     for (const [key, value] of Object.entries(subTable)) {
