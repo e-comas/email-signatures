@@ -16,17 +16,19 @@
     const waitForStatus = observer.next();
 
     subscribe(observer);
-    return waitForStatus.then((state) => {
-      connected = state.value;
-      return () => {
-        connecting = new Promise((resolve, reject) =>
-          (connected ? module.disconnect() : module.connect()).then(
-            resolve,
-            reject
-          )
-        );
-      };
-    });
+    return Promise.all([module.initClientPromise, waitForStatus]).then(
+      ([, state]) => {
+        connected = state.value;
+        return () => {
+          connecting = new Promise((resolve, reject) =>
+            (connected ? module.disconnect() : module.connect()).then(
+              resolve,
+              reject
+            )
+          );
+        };
+      }
+    );
   });
 </script>
 
@@ -58,6 +60,7 @@
     {/if}
   {:catch error}
     <p style="color: red">Unable to connect to Google API.</p>
+    <p style="color: red">{error.message || error.error.message}</p>
   {/await}
   {#if connected}
     <Db />

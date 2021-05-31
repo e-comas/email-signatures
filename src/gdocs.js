@@ -15,17 +15,26 @@ function handleClientLoad() {
   return gapi.load("client:auth2", initClient);
 }
 
+let initClientResolve, initClientReject;
+export const initClientPromise = new Promise((resolve, reject) => {
+  initClientResolve = resolve;
+  initClientReject = reject;
+});
+initClientPromise.catch(console.error);
 /**
  *  Initializes the API client library and sets up sign-in state
  *  listeners.
  */
 async function initClient() {
-  await gapi.client.init({
-    apiKey: API_KEY,
-    clientId: CLIENT_ID,
-    discoveryDocs: ["https://docs.googleapis.com/$discovery/rest?version=v1"],
-    scope: SCOPES,
-  });
+  await gapi.client
+    .init({
+      apiKey: API_KEY,
+      clientId: CLIENT_ID,
+      discoveryDocs: ["https://docs.googleapis.com/$discovery/rest?version=v1"],
+      scope: SCOPES,
+    })
+    .then(initClientResolve, initClientReject);
+
   // Listen for sign-in state changes.
   gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
