@@ -226,5 +226,10 @@
     <ClipboardHandler />
   {/if}
 {:catch error}
-  <p style="color: red">{error}</p>
+  <p style="color: red">
+    {error
+      ? error.message ||
+        `${error.result.error.code} ${error.result.error.status}: ${error.result.error.message}`
+      : "Unknown error"}
+  </p>
 {/await}
