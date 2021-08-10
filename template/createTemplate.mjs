@@ -9,29 +9,28 @@ const html = ([str]) => str;
 const _ = (html, css) =>
   "{#await data}\n" +
   "<p>...loading</p>\n" +
-  "{:then [PhoneInternationalFormat, IMG_WIDTH]}\n" +
-  juice
-    .inlineContent(html, css)
-    .replace(
-      /(\w+)="([^"]*\{[^"]*)"/g,
-      (_, key, value) =>
-        `${key}={${value
-          .split(/\{|\}/g)
-          .map((str, i) => (i & 1 ? str : str.length && JSON.stringify(str)))
-          .filter(Boolean)
-          .join(" + ")}}`
-    )
-    .replace(
-      new RegExp(
-        Array.from(
-          html.match(/<[A-Z][a-z]+/g) ?? [],
-          (tag) => `(</?)(${tag.substring(1).toLowerCase()})`
-        ).join("|"),
-        "g"
-      ),
-      (_, bracket, tag) =>
-        bracket + tag.charAt(0).toUpperCase() + tag.substring(1)
-    ) +
+  "{:then [PhoneInternationalFormat]}\n" +
+  juice.inlineContent(html, css) +
+  // .replace(
+  //   /(\w+)="([^"]*\{[^"]*)"/g,
+  //   (_, key, value) =>
+  //     `${key}={${value
+  //       .split(/\{|\}/g)
+  //       .map((str, i) => (i & 1 ? str : str.length && JSON.stringify(str)))
+  //       .filter(Boolean)
+  //       .join(" + ")}}`
+  // )
+  // .replace(
+  //   new RegExp(
+  //     Array.from(
+  //       html.match(/<[A-Z][a-z]+/g) ?? [],
+  //       (tag) => `(</?)(${tag.substring(1).toLowerCase()})`
+  //     ).join("|"),
+  //     "g"
+  //   ),
+  //   (_, bracket, tag) =>
+  //     bracket + tag.charAt(0).toUpperCase() + tag.substring(1)
+  // ) +
   "\n<style>\n" +
   "#signature { text-align: initial; }\n" +
   "</style>\n" +
@@ -43,34 +42,15 @@ process.stdout.write(html`
   <script lang="ts">
     import format from "@aduh95/format-phone-number";
 
-    import Social from "./Social.svelte";
-
     export let user;
     export let emailAddress;
 
-    const companyAddress =
-      "e-Comas Sarl, 68 Avenue de la Liberté, 1930 Luxembourg";
+    const companyAddress = "www.qhalikay-organics.com";
 
-    const { Name, Title, Phone, pictureUrl } = user;
+    const { Name, Title, Phone } = user;
     const url = user.url ?? {};
 
-    const decodeImgFromUrl = (url) => {
-      const img = new Image();
-      img.src = url;
-      return img.decode().then(() => img);
-    };
-    const IMG_HEIGHT = 105;
-
-    const data = Promise.all([
-      Phone ? format(Phone) : Promise.resolve(),
-      decodeImgFromUrl(pictureUrl).then(
-        (img) => img.naturalWidth * (IMG_HEIGHT / img.naturalHeight),
-        (e) => {
-          console.error(e);
-          return IMG_HEIGHT;
-        }
-      ),
-    ]);
+    const data = Promise.all([Phone ? format(Phone) : Promise.resolve()]);
   </script>
 `);
 process.stdout.write(
@@ -84,10 +64,10 @@ process.stdout.write(
                 <tr>
                   <td>
                     <img
-                      alt="{Name}'s picture"
-                      width="{IMG_WIDTH}"
-                      height="{IMG_HEIGHT}"
-                      src="{pictureUrl}"
+                      alt="Qhalikay Organics logo"
+                      width="105"
+                      height="105"
+                      src="https://cdn.shopify.com/s/files/1/0576/7561/2341/files/QKLogo4email.png"
                     />
                   </td>
 
@@ -121,7 +101,11 @@ process.stdout.write(
                         </tr>
                         {/if}
                         <tr>
-                          <td>{companyAddress}</td>
+                          <td>
+                            <a href="https://{companyAddress}" target="_blank"
+                              >{companyAddress}</a
+                            >
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -132,24 +116,21 @@ process.stdout.write(
           </td>
         </tr>
         <tr>
-          <td><Social links="{url}" /></td>
-        </tr>
-        <tr>
           <td>
             <table cellpadding="0" cellspacing="0">
               <tbody>
                 <tr>
                   <td>
                     <a
-                      href="https://www.e-comas.com/white-paper-form.html"
+                      href="https://www.qhalikay-organics.com/"
                       target="_blank"
                       rel="noopener"
                     >
                       <img
                         alt="Logo"
-                        width="540"
-                        height="90"
-                        src="https://www.e-comas.com/docs/signatures/ressources/how-to-manage-amazon.jpg"
+                        width="384"
+                        height="143"
+                        src="https://cdn.shopify.com/s/files/1/0576/7561/2341/files/email_banner.jpg"
                     /></a>
                   </td>
                 </tr>
