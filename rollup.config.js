@@ -23,11 +23,15 @@ function serve() {
     writeBundle() {
       if (server) return;
       server = require("child_process").spawn(
-        "npm",
-        ["run", "start", "--", "--dev"],
+        process.argv0,
+        [
+          require("path").join(__dirname, "node_modules", ".bin", "sirv"),
+          "--dev",
+          "public",
+        ],
         {
           stdio: ["ignore", "inherit", "inherit"],
-          shell: true,
+          shell: false,
         }
       );
 
