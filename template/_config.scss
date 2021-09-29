@@ -7,10 +7,10 @@ $grey: #f6f6f6; // Background color
 $width: 640px; // Width of the content area
 $br: 0; // Border radius
 $btn-br: 0; // Border radius
-$primary-color: #20262b; // Primary color for buttons and links
-$secondary-color: #51bf9d;
+$primary-color: #0c195a; // Primary color for buttons and links
+$secondary-color: #64d7be;
 $product-bg-color: #d2d5d8;
-$font-color: #20262b; // Default font color
+$font-color: $primary-color; // Default font color
 $serif-font-color: #f0efec;
 $discreet-font-color: #9b9c9c;
 
