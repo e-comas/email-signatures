@@ -4,7 +4,7 @@
 
   links.link = "https://www.e-comas.com/";
 
-  const providers = Object.entries(links);
+  const providers: [string, string][] = Object.entries(links);
 </script>
 
 <div {style}>
@@ -14,7 +14,7 @@
         width="26"
         alt={name + " icon"}
         style="border:0; height:26px; width:26px"
-        src={`https://e-comas.com/icons/${name.toLowerCase()}.jpg`}
+        src={`https://e-comas.com/icons/${name.toLowerCase()}.png`}
       /></a
     >
   {/each}
