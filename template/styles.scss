@@ -29,41 +29,59 @@ table {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 
+  & > tbody > tr > td {
+    vertical-align: middle;
+    &:first-of-type {
+      padding: 20px;
+    }
+  }
+
   th.name {
-    font-size: 20px;
+    font-size: 30px;
     color: $green;
     letter-spacing: 0;
     text-align: left;
   }
   td.title {
-    font-size: 12px;
+    font-size: 16px;
     color: $grey;
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 24px;
+  }
+
+  .socials {
+    line-height: 25px;
+    font-size: 16px;
+    letter-spacing: 0;
+    a {
+      color: $grey;
+    }
+    img {
+      vertical-align: middle;
+    }
   }
 
   address {
-    font-size: 12px;
+    font-size: 16px;
     color: $grey;
     letter-spacing: 0;
-    line-height: 15px;
+    line-height: 20px;
     font-style: normal;
   }
 
   .cta a {
     font-weight: bold;
-    font-size: 12px;
+    font-size: 16px;
     color: $green;
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 24px;
   }
 
   .company-info {
     background-color: $green2;
     color: white;
-  }
-
-  img {
-    display: block;
+    img {
+      display: block;
+    }
   }
 }

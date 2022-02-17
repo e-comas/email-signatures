@@ -47,9 +47,6 @@ process.stdout.write(html`
     export let user;
     export let emailAddress;
 
-    const companyAddress =
-      "e-Comas Sarl, 68 Avenue de la Liberté, 1930 Luxembourg";
-
     const { Name, Title, Phone, pictureUrl } = user;
     const url = user.url ?? {};
 
@@ -124,19 +121,26 @@ process.stdout.write(
             />
           </td>
           <td>
-            <table cellpadding="0" cellspacing="5">
+            <table cellpadding="0" cellspacing="0">
               <tbody>
                 <tr>
                   <th class="name">{Name}</th>
                 </tr>
                 <tr>
-                  <td>{Title}</td>
+                  <td class="title">{Title}</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
                 </tr>
                 <tr>
                   <td class="socials">
                     {#if linkedin}
                     <a href="{linkedin}"
-                      ><img src="todo" alt="LinkedIn account"
+                      ><img
+                        src="/images/linkedin-alt.png"
+                        alt="LinkedIn account"
+                        width="25"
+                        height="25"
                     /></a>
                     | {/if} {#if Phone}
                     <a href="{phone_url}">{PhoneInternationalFormat}</a> | {/if}
@@ -144,7 +148,18 @@ process.stdout.write(
                   </td>
                 </tr>
                 <tr>
-                  <td><address>{companyAddress}</address></td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>
+                    <address>
+                      e-Comas Sarl, 68 Avenue de la Liberté,<br />1930
+                      Luxembourg
+                    </address>
+                  </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
                 </tr>
                 <tr>
                   <td class="cta">
@@ -157,6 +172,7 @@ process.stdout.write(
               </tbody>
             </table>
           </td>
+          <td style="padding:10px">&nbsp;</td>
           <td>
             <table cellpadding="0" cellspacing="0" class="company-info">
               <colgroup>
