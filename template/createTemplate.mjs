@@ -47,10 +47,8 @@ process.stdout.write(html`
     export let user;
     export let emailAddress;
 
-    const { Name, Title, Phone, pictureUrl } = user;
-    const url = user.url ?? {};
+    const { Name, Title, Phone, pictureUrl, LinkedIn } = user;
 
-    const linkedin = url?.LinkedIn;
     const phone_url = "tel:" + Phone;
     const email_address_url = "mailto:" + emailAddress;
 
@@ -134,8 +132,8 @@ process.stdout.write(
                 </tr>
                 <tr>
                   <td class="socials">
-                    {#if linkedin}
-                    <a href="{linkedin}"
+                    {#if LinkedIn}
+                    <a href="{LinkedIn}"
                       ><img
                         src="/images/linkedin-alt.png"
                         alt="LinkedIn account"

@@ -43,13 +43,13 @@
   const containsDeepChange = (database, obj) =>
     Object.entries(obj).some(([key, value]) =>
       typeof value === "object"
-        ? containsDeepChange(database[key], value)
+        ? containsDeepChange(database[key] ?? {}, value)
         : database[key] !== value
     );
   const getAssociatedValue = (database, key) => {
     if (key.includes(".")) {
       const [key0, key1] = key.split(".", 2);
-      return database[key0][key1];
+      return database[key0]?.[key1];
     } else {
       return database[key];
     }
@@ -59,7 +59,7 @@
       value && value !== userData[key]
         ? typeof value === "string" || Array.isArray(value)
           ? { entry: [`${prefix}${key}`, value] }
-          : getLeftOverEntries(value, userData[key], `${key}.`)
+          : getLeftOverEntries(value, (userData[key] ??= {}), `${key}.`)
         : []
     );
 
@@ -178,7 +178,7 @@
                   },
                 },
               },
-              value === ""
+              value === "" || value == null
                 ? undefined
                 : {
                     insertText: {
