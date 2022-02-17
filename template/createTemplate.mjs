@@ -108,6 +108,29 @@ process.stdout.write(html`
 process.stdout.write(
   _(
     html`<table id="signature" cellpadding="0" cellspacing="0">
+      <style>
+        @media screen and (max-width: 645px) {
+          #signature > tbody > tr {
+            display: flex;
+            flex-direction: column;
+          }
+          #signature .company-info {
+            padding: 10px;
+          }
+          #signature .company-info > tbody > tr > td:first-child {
+            display: none;
+          }
+          #signature .company-info > tbody > tr > td,
+          #signature .company-info table {
+            width: 100%;
+          }
+          #signature img:first-of-type,
+          #signature .company-info img {
+            display: block;
+            margin: auto;
+          }
+        }
+      </style>
       <tbody>
         <tr>
           <td>
