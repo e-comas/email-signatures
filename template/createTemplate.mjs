@@ -73,7 +73,7 @@ process.stdout.write(html`
     const companyURL = "https://e-comas.com";
     const companyLogo = {
       alt: "e-Comas, eCommerce made simple",
-      src: "/images/logo.png",
+      src: "https://www.e-comas.com/docs/signatures/ressources/logo.png",
       width: 165,
       height: 40,
     };
@@ -83,22 +83,22 @@ process.stdout.write(html`
 
     const socialLinks = [
       {
-        src: "/images/linkedin.png",
+        src: "https://www.e-comas.com/docs/signatures/ressources/linkedin.png",
         alt: "LinkedIn",
         href: "https://www.linkedin.com/company/e-comas/",
       },
       {
-        src: "/images/youtube.png",
+        src: "https://www.e-comas.com/docs/signatures/ressources/youtube.png",
         alt: "YouTube",
         href: "https://www.youtube.com/channel/UClCYdUcUs1zJk8O3a4lC9lw",
       },
       {
-        src: "/images/facebook.png",
+        src: "https://www.e-comas.com/docs/signatures/ressources/facebook.png",
         alt: "Facebook",
         href: "https://www.facebook.com/ecommerce.made.simple/",
       },
       {
-        src: "/images/instagram.png",
+        src: "https://www.e-comas.com/docs/signatures/ressources/instagram.png",
         alt: "Instagram",
         href: "https://www.instagram.com/e.comas.amazon.made.simple/",
       },
@@ -135,7 +135,7 @@ process.stdout.write(
                     {#if LinkedIn}
                     <a href="{LinkedIn}"
                       ><img
-                        src="/images/linkedin-alt.png"
+                        src="https://www.e-comas.com/docs/signatures/ressources/linkedin-alt.png"
                         alt="LinkedIn account"
                         width="25"
                         height="25"
@@ -185,7 +185,7 @@ process.stdout.write(
                   <td colspan="3">
                     <img
                       alt=""
-                      src="/images/top-right.png"
+                      src="https://www.e-comas.com/docs/signatures/ressources/top-right.png"
                       width="{topImageWidth}"
                       height="120"
                     />
@@ -195,7 +195,7 @@ process.stdout.write(
                   <td rowspan="2">
                     <img
                       alt=""
-                      src="/images/bottom-left.png"
+                      src="https://www.e-comas.com/docs/signatures/ressources/bottom-left.png"
                       width="{bottomLeftWidth}"
                       height="156"
                     />
