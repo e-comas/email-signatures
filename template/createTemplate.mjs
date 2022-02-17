@@ -57,7 +57,7 @@ process.stdout.write(html`
       img.src = url;
       return img.decode().then(() => img);
     };
-    const IMG_HEIGHT = 105;
+    const IMG_HEIGHT = 145;
 
     const data = Promise.all([
       Phone ? format(Phone) : Promise.resolve(),
