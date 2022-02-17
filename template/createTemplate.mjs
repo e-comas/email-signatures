@@ -23,10 +23,11 @@ const _ = (html, css) =>
     )
     .replace(
       new RegExp(
-        Array.from(
-          html.match(/<[A-Z][a-z]+/g) ?? [],
-          (tag) => `(</?)(${tag.substring(1).toLowerCase()})`
-        ).join("|"),
+        "(</?)(" +
+          Array.from(html.match(/<[A-Z][a-z]+/g) ?? [], (tag) =>
+            tag.substring(1).toLowerCase()
+          ).join("|") +
+          ")",
         "g"
       ),
       (_, bracket, tag) =>
@@ -43,8 +44,6 @@ process.stdout.write(html`
   <script lang="ts">
     import format from "@aduh95/format-phone-number";
 
-    import Social from "./Social.svelte";
-
     export let user;
     export let emailAddress;
 
@@ -53,6 +52,10 @@ process.stdout.write(html`
 
     const { Name, Title, Phone, pictureUrl } = user;
     const url = user.url ?? {};
+
+    const linkedin = url?.LinkedIn;
+    const phone_url = "tel:" + Phone;
+    const email_address_url = "mailto:" + emailAddress;
 
     const decodeImgFromUrl = (url) => {
       const img = new Image();
@@ -71,6 +74,19 @@ process.stdout.write(html`
         }
       ),
     ]);
+
+    const companyURL = "https://e-comas.com";
+    const companyLogo = {
+      alt: "e-Comas, eCommerce made simple",
+      src: "/images/logo.png",
+      width: 165,
+      height: 40,
+    };
+
+    const topImageWidth = 321;
+    const bottomLeftWidth = 124;
+
+    const socialLinks = [];
   </script>
 `);
 process.stdout.write(
@@ -79,79 +95,110 @@ process.stdout.write(
       <tbody>
         <tr>
           <td>
-            <table cellpadding="0" cellspacing="0">
+            <img
+              alt="{Name}'s picture"
+              width="{IMG_WIDTH}"
+              height="{IMG_HEIGHT}"
+              src="{pictureUrl}"
+            />
+          </td>
+          <td>
+            <table cellpadding="0" cellspacing="5">
               <tbody>
                 <tr>
-                  <td>
-                    <img
-                      alt="{Name}'s picture"
-                      width="{IMG_WIDTH}"
-                      height="{IMG_HEIGHT}"
-                      src="{pictureUrl}"
-                    />
+                  <th class="name">{Name}</th>
+                </tr>
+                <tr>
+                  <td>{Title}</td>
+                </tr>
+                <tr>
+                  <td class="socials">
+                    {#if linkedin}
+                    <a href="{linkedin}"
+                      ><img src="todo" alt="LinkedIn account"
+                    /></a>
+                    | {/if} {#if Phone}
+                    <a href="{phone_url}">{PhoneInternationalFormat}</a> | {/if}
+                    <a href="{email_address_url}">{emailAddress}</a>
                   </td>
-
-                  <td>
-                    <table cellpadding="0" cellspacing="5">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <strong class="name">{Name}</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <strong>{Title}</strong>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="mailto:{emailAddress}" target="_blank"
-                              >{emailAddress}</a
-                            >
-                          </td>
-                        </tr>
-                        {#if Phone}
-                        <tr>
-                          <td>
-                            <a href="tel:{Phone}" target="_blank"
-                              >{PhoneInternationalFormat}</a
-                            >
-                          </td>
-                        </tr>
-                        {/if}
-                        <tr>
-                          <td>{companyAddress}</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                </tr>
+                <tr>
+                  <td><address>{companyAddress}</address></td>
+                </tr>
+                <tr>
+                  <td class="cta">
+                    Download the e-Comas whitepaper:
+                    <a href="https://www.e-comas.com/white-paper-form.html"
+                      >How to manage Amazon</a
+                    >.
                   </td>
                 </tr>
               </tbody>
             </table>
           </td>
-        </tr>
-        <tr>
-          <td><Social links="{url}" /></td>
-        </tr>
-        <tr>
           <td>
-            <table cellpadding="0" cellspacing="0">
+            <table cellpadding="0" cellspacing="0" class="company-info">
+              <colgroup>
+                <col width="{bottomLeftWidth}" />
+                <col width="{companyLogo.width}" />
+                <col
+                  width="{topImageWidth - companyLogo.width - bottomLeftWidth}"
+                />
+              </colgroup>
               <tbody>
                 <tr>
-                  <td>
-                    <a
-                      href="https://www.e-comas.com/white-paper-form.html"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      <img
-                        alt="Logo"
-                        width="540"
-                        height="90"
-                        src="https://www.e-comas.com/docs/signatures/ressources/how-to-manage-amazon.jpg"
-                    /></a>
+                  <td colspan="3">
+                    <img
+                      alt=""
+                      src="/images/top-right.png"
+                      width="{topImageWidth}"
+                      height="120"
+                    />
                   </td>
+                </tr>
+                <tr>
+                  <td rowspan="2">
+                    <img
+                      alt=""
+                      src="/images/bottom-left.png"
+                      width="{bottomLeftWidth}"
+                      height="156"
+                    />
+                  </td>
+                  <td>
+                    <table cellpadding="0" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td colspan="{socialLinks.length}">
+                            <a href="{companyURL}">
+                              <img
+                                alt="{companyLogo.alt}"
+                                width="{companyLogo.width}"
+                                height="{companyLogo.height}"
+                                src="{companyLogo.src}"
+                              />
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          {#each socialLinks as socialLink}
+                          <td>
+                            <a href="{socialLink.url}"
+                              ><img
+                                src="{socialLink.img}"
+                                alt="{socialLink.name}"
+                            /></a>
+                          </td>
+                          {/each}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
                 </tr>
               </tbody>
             </table>
