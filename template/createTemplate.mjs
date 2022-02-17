@@ -86,7 +86,28 @@ process.stdout.write(html`
     const topImageWidth = 321;
     const bottomLeftWidth = 124;
 
-    const socialLinks = [];
+    const socialLinks = [
+      {
+        src: "/images/linkedin.png",
+        alt: "LinkedIn",
+        href: "https://www.linkedin.com/company/e-comas/",
+      },
+      {
+        src: "/images/youtube.png",
+        alt: "YouTube",
+        href: "https://www.youtube.com/channel/UClCYdUcUs1zJk8O3a4lC9lw",
+      },
+      {
+        src: "/images/facebook.png",
+        alt: "Facebook",
+        href: "https://www.facebook.com/ecommerce.made.simple/",
+      },
+      {
+        src: "/images/instagram.png",
+        alt: "Instagram",
+        href: "https://www.instagram.com/e.comas.amazon.made.simple/",
+      },
+    ];
   </script>
 `);
 process.stdout.write(
@@ -167,9 +188,14 @@ process.stdout.write(
                   </td>
                   <td>
                     <table cellpadding="0" cellspacing="0">
+                      {#if socialLinks.length !== 0}
+                      <colgroup>
+                        <col width="0" />
+                      </colgroup>
+                      {/if}
                       <tbody>
                         <tr>
-                          <td colspan="{socialLinks.length}">
+                          <td colspan="{socialLinks.length * 2 || 1}">
                             <a href="{companyURL}">
                               <img
                                 alt="{companyLogo.alt}"
@@ -181,12 +207,18 @@ process.stdout.write(
                           </td>
                         </tr>
                         <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
                           {#each socialLinks as socialLink}
-                          <td>
-                            <a href="{socialLink.url}"
+                          <td>&nbsp;</td>
+                          <td width="25">
+                            <a href="{socialLink.href}"
                               ><img
-                                src="{socialLink.img}"
-                                alt="{socialLink.name}"
+                                src="{socialLink.src}"
+                                alt="{socialLink.alt}"
+                                width="25"
+                                height="25"
                             /></a>
                           </td>
                           {/each}
