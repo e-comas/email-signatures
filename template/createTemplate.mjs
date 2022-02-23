@@ -57,7 +57,7 @@ process.stdout.write(html`
       img.src = url;
       return img.decode().then(() => img);
     };
-    const IMG_HEIGHT = 145;
+    const IMG_HEIGHT = 270;
 
     const data = Promise.all([
       Phone ? format(Phone) : Promise.resolve(),
@@ -151,7 +151,7 @@ process.stdout.write(
                   <td class="title">{Title}</td>
                 </tr>
                 <tr>
-                  <td>&nbsp;</td>
+                  <td class="empty">&nbsp;</td>
                 </tr>
                 <tr>
                   <td class="socials">
@@ -169,7 +169,7 @@ process.stdout.write(
                   </td>
                 </tr>
                 <tr>
-                  <td>&nbsp;</td>
+                  <td class="empty">&nbsp;</td>
                 </tr>
                 <tr>
                   <td>
@@ -180,7 +180,7 @@ process.stdout.write(
                   </td>
                 </tr>
                 <tr>
-                  <td>&nbsp;</td>
+                  <td class="empty">&nbsp;</td>
                 </tr>
                 <tr>
                   <td class="cta">
@@ -244,11 +244,11 @@ process.stdout.write(
                           </td>
                         </tr>
                         <tr>
-                          <td>&nbsp;</td>
+                          <td class="empty">&nbsp;</td>
                         </tr>
                         <tr>
                           {#each socialLinks as socialLink}
-                          <td>&nbsp;</td>
+                          <td class="empty">&nbsp;</td>
                           <td width="25">
                             <a href="{socialLink.href}"
                               ><img
@@ -263,11 +263,11 @@ process.stdout.write(
                       </tbody>
                     </table>
                   </td>
-                  <td>&nbsp;</td>
+                  <td class="empty">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
+                  <td class="empty">&nbsp;</td>
+                  <td class="empty">&nbsp;</td>
                 </tr>
               </tbody>
             </table>
