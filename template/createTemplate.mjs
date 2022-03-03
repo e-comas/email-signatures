@@ -57,7 +57,7 @@ process.stdout.write(html`
       img.src = url;
       return img.decode().then(() => img);
     };
-    const IMG_HEIGHT = 270;
+    const IMG_HEIGHT = 200;
 
     const data = Promise.all([
       Phone ? format(Phone) : Promise.resolve(),
@@ -74,12 +74,12 @@ process.stdout.write(html`
     const companyLogo = {
       alt: "e-Comas, eCommerce made simple",
       src: "https://www.e-comas.com/docs/signatures/ressources/logo.png",
-      width: 165,
-      height: 40,
+      width: 136,
+      height: 33,
     };
 
-    const topImageWidth = 321;
-    const bottomLeftWidth = 124;
+    const topImageWidth = 276;
+    const bottomLeftWidth = 107;
 
     const socialLinks = [
       {
@@ -160,8 +160,8 @@ process.stdout.write(
                       ><img
                         src="https://www.e-comas.com/docs/signatures/ressources/linkedin-alt.png"
                         alt="LinkedIn account"
-                        width="25"
-                        height="25"
+                        width="20"
+                        height="20"
                     /></a>
                     | {/if} {#if Phone}
                     <a href="{phone_url}">{PhoneInternationalFormat}</a> | {/if}
@@ -254,8 +254,8 @@ process.stdout.write(
                               ><img
                                 src="{socialLink.src}"
                                 alt="{socialLink.alt}"
-                                width="25"
-                                height="25"
+                                width="20"
+                                height="20"
                             /></a>
                           </td>
                           {/each}

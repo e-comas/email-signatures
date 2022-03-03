@@ -37,28 +37,28 @@ table {
   }
 
   th.name {
-    font-size: 25px;
-    line-height: 31px;
+    font-size: 20px;
+    line-height: 25px;
     color: $green;
     letter-spacing: 0;
     text-align: left;
   }
   td.title {
-    font-size: 15px;
+    font-size: 12px;
     color: $grey;
     letter-spacing: 0;
-    line-height: 22px;
+    line-height: 18px;
   }
 
   td.empty {
     font-family: unset;
-    line-height: 15px;
+    line-height: 12px;
     vertical-align: unset;
   }
 
   .socials {
-    line-height: 25px;
-    font-size: 15px;
+    line-height: 20px;
+    font-size: 12px;
     letter-spacing: 0;
     a {
       color: $grey;
@@ -71,19 +71,22 @@ table {
   }
 
   address {
-    font-size: 15px;
+    font-size: 12px;
     color: $grey;
     letter-spacing: 0;
-    line-height: 19px;
+    line-height: 15px;
     font-style: normal;
   }
 
-  .cta a {
-    font-weight: bold;
-    font-size: 15px;
-    color: $green;
-    letter-spacing: 0;
-    line-height: 22px;
+  .cta {
+    font-size: 12px;
+    line-height: 18px;
+    color: $grey;
+    a {
+      font-weight: bold;
+      color: $green;
+      letter-spacing: 0;
+    }
   }
 
   .company-info {
