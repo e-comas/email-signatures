@@ -175,7 +175,7 @@ process.stdout.write(
                   <td>
                     <address>
                       e-Comas Sarl, 68 Avenue de la Liberté,<br />1930
-                      Luxembourg
+                      Luxembourg, LUXEMBOURG
                     </address>
                   </td>
                 </tr>
