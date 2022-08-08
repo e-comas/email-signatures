@@ -1,5 +1,8 @@
-import fs from "fs/promises";
-import path from "path";
+#!/usr/bin/env node
+
+import fs from "node:fs/promises";
+import path from "node:path";
+import process from "node:process";
 
 // const INPUT_DIR = new URL("./", import.meta.url);
 // const OUTPUT_DIR = new URL("./out/", import.meta.url);
@@ -114,7 +117,7 @@ export async function optimizeMatrix(url) {
 
 {
   if (!input || !output) {
-    throw new Error("Usage: ./optimizeImageSize.mjs input.png output.png");
+    throw new Error("Usage: ./optimizeImageSize.mjs input.png output.jpg");
   }
   const imgData = await optimizeMatrix(path.resolve(input));
   console.log({
