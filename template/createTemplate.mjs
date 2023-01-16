@@ -95,12 +95,12 @@ process.stdout.write(html`
       {
         src: "https://www.e-comas.com/docs/signatures/ressources/facebook.png",
         alt: "Facebook",
-        href: "https://www.facebook.com/ecommerce.made.simple/",
+        href: "https://www.facebook.com/ecomas.ecommerce.made.simple/",
       },
       {
         src: "https://www.e-comas.com/docs/signatures/ressources/instagram.png",
         alt: "Instagram",
-        href: "https://www.instagram.com/e.comas.amazon.made.simple/",
+        href: "https://www.instagram.com/ecomas.ecommerce.made.simple/",
       },
     ];
   </script>
