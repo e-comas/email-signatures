@@ -119,6 +119,7 @@ export async function optimizeMatrix(url) {
   if (!input || !output) {
     throw new Error("Usage: ./optimizeImageSize.mjs input.png output.jpg");
   }
+  console.log({input, output})
   const imgData = await optimizeMatrix(path.resolve(input));
   console.log({
     quality: imgData.optionsUsed.quality,
@@ -126,6 +127,7 @@ export async function optimizeMatrix(url) {
     kb: imgData.size >> 10,
   });
   await fs.writeFile(path.resolve(output), imgData.binary);
+  console.log('done')
 }
 
 // await fs.mkdir(OUTPUT_DIR, { recursive: true });
