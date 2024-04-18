@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Converts High definition transparent png headshot into an optimized jpg for email signatures
+# Usage: `./toEmailPicture.sh input.png output.jpg`
+
 realpath() {
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
@@ -16,3 +19,9 @@ file "$input"
 file "$output.intermediary"
 NODE_OPTIONS=--no-experimental-fetch "$dir_path/optimizeImageSize.mjs" "$output.intermediary" "$output" \
 && rm "$output.intermediary"
+
+if [ $? -eq 0 ]; then
+    echo "\033[0;32mDONE:\033[0m Optimized image sucessfuly written to $output"
+else
+    echo "\033[0;31mERROR:\033[0m Image optimization failed"
+fi
