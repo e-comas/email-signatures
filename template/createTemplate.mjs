@@ -186,7 +186,7 @@ process.stdout.write(
                   <td class="cta">
                     Download the e-Comas whitepaper:
                     <a href="https://www.e-comas.com/white-paper-form.html"
-                      >When luxury meets the mass market</a
+                      >Amazon Marketing Cloud Unpacked</a
                     >.
                   </td>
                 </tr>
