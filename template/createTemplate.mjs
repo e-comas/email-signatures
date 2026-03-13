@@ -209,11 +209,6 @@ process.stdout.write(
                                     style="font-weight: bold; color: #2f308d; letter-spacing: 0;">Amazon Marketing Cloud
                                     Unpacked</a>.
                             </td>
-                            {#if Note}
-                            <!-- <td class="note" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: top;">
-                {note_text}
-              </td> -->
-                            {/if}
                         </tr>
                     </tbody>
                 </table>
