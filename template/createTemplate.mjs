@@ -107,174 +107,241 @@ process.stdout.write(html`
 `);
 process.stdout.write(
   _(
-    html`<table id="signature" cellpadding="0" cellspacing="0">
-      <style>
+    html`<table id="signature" cellpadding="0" cellspacing="0"
+    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate; border: 1px solid black;">
+    <style>
         @media screen and (max-width: 645px) {
-          #signature > tbody > tr {
-            display: flex;
-            flex-direction: column;
-          }
-          #signature .company-info {
-            padding: 10px;
-          }
-          #signature .company-info > tbody > tr > td:first-child {
-            display: none;
-          }
-          #signature .company-info > tbody > tr > td,
-          #signature .company-info table {
-            width: 100%;
-          }
-          #signature img:first-of-type,
-          #signature .company-info img {
-            display: block;
-            margin: auto;
-          }
+            #signature>tbody>tr {
+                display: flex;
+                flex-direction: column;
+            }
+
+            #signature .company-info {
+                padding: 10px;
+            }
+
+            #signature .company-info>tbody>tr>td:first-child {
+                display: none;
+            }
+
+            #signature .company-info>tbody>tr>td,
+            #signature .company-info table {
+                width: 100%;
+            }
+
+            #signature img:first-of-type,
+            #signature .company-info img {
+                display: block;
+                margin: auto;
+            }
         }
-      </style>
-      <tbody>
+    </style>
+    <tbody>
         <tr>
-          <td>
-            <img
-              alt="{Name}'s picture"
-              width="{IMG_WIDTH}"
-              height="{IMG_HEIGHT}"
-              src="{pictureUrl}"
-            />
-          </td>
-          <td>
-            <table cellpadding="0" cellspacing="0">
-              <tbody>
-                <tr>
-                  <th class="name">{Name}</th>
-                </tr>
-                <tr>
-                  <td class="title">{Title}</td>
-                </tr>
-                <tr>
-                  <td class="empty">&nbsp;</td>
-                </tr>
-                <tr>
-                  <td class="socials">
-                    {#if LinkedIn}
-                    <a href="{LinkedIn}"
-                      ><img
-                        src="https://www.e-comas.com/docs/signatures/ressources/linkedin-alt.png"
-                        alt="LinkedIn account"
-                        width="20"
-                        height="20"
-                    /></a>
-                    | {/if} {#if Phone}
-                    <a href="{phone_url}">{PhoneInternationalFormat}</a> | {/if}
-                    <a href="{email_address_url}">{emailAddress}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="empty">&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>
-                    <address>
-                      e-Comas Sarl, 68 Avenue de la Liberté,<br />1930
-                      Luxembourg, LUXEMBOURG
-                    </address>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="empty">&nbsp;</td>
-                </tr>
-                <tr>
-                  <td class="cta">
-                    Download the e-Comas whitepaper:
-                    <a href="https://www.e-comas.com/white-paper-form.html"
-                      >Amazon Marketing Cloud Unpacked</a
-                    >.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-          <td style="padding:10px">&nbsp;</td>
-          <td>
-            <table cellpadding="0" cellspacing="0" class="company-info">
-              <colgroup>
-                <col width="{bottomLeftWidth}" />
-                <col width="{companyLogo.width}" />
-                <col
-                  width="{topImageWidth - companyLogo.width - bottomLeftWidth}"
-                />
-              </colgroup>
-              <tbody>
-                <tr>
-                  <td colspan="3">
-                    <img
-                      alt=""
-                      src="https://www.e-comas.com/docs/signatures/ressources/top-right.png"
-                      width="{topImageWidth}"
-                      height="120"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td rowspan="2">
-                    <img
-                      alt=""
-                      src="https://www.e-comas.com/docs/signatures/ressources/bottom-left.png"
-                      width="{bottomLeftWidth}"
-                      height="156"
-                    />
-                  </td>
-                  <td>
-                    <table cellpadding="0" cellspacing="0">
-                      {#if socialLinks.length !== 0}
-                      <colgroup>
-                        <col width="0" />
-                      </colgroup>
-                      {/if}
-                      <tbody>
+            <td
+                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding: 20px;">
+                <img alt="a pic" width={IMG_WIDTH} height={IMG_HEIGHT} src={pictureUrl}
+                    style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; border: none;">
+            </td>
+            <td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle;">
+                <table cellpadding="0" cellspacing="0"
+                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate;">
+                    <tbody>
                         <tr>
-                          <td colspan="{socialLinks.length * 2 || 1}">
-                            <a href="{companyURL}">
-                              <img
-                                alt="{companyLogo.alt}"
-                                width="{companyLogo.width}"
-                                height="{companyLogo.height}"
-                                src="{companyLogo.src}"
-                              />
-                            </a>
-                          </td>
+                            <th class="name"
+                                style="font-size: 22px; line-height: 25px; color: #2f308d; letter-spacing: 0; text-align: left;">
+                                {Name}
+                            </th>
                         </tr>
                         <tr>
-                          <td class="empty">&nbsp;</td>
+                            <td class="title"
+                                style="font-family: Arial, Helvetica, sans-serif; vertical-align: top; font-size: 18px; font-weight: bold; letter-spacing: 0; line-height: 18px;">
+                                {Title}
+                            </td>
                         </tr>
                         <tr>
-                          {#each socialLinks as socialLink}
-                          <td class="empty">&nbsp;</td>
-                          <td width="25">
-                            <a href="{socialLink.href}"
-                              ><img
-                                src="{socialLink.src}"
-                                alt="{socialLink.alt}"
-                                width="20"
-                                height="20"
-                            /></a>
-                          </td>
-                          {/each}
+                            <td class="empty"
+                                style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset;">
+                                &nbsp;</td>
                         </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                  <td class="empty">&nbsp;</td>
-                </tr>
-                <tr>
-                  <td class="empty">&nbsp;</td>
-                  <td class="empty">&nbsp;</td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
+                        <tr>
+                            <td class="socials"
+                                style="font-family: Arial, Helvetica, sans-serif; vertical-align: middle; line-height: 20px; font-size: 12px; letter-spacing: 0;display: inline-flex; align-items: center;">
+                                {#if LinkedIn}
+                                <a href={LinkedIn}>
+                                    <img alt="LinkedIn"
+                                        src="https://www.e-comas.com/docs/signatures/ressources/icons/socials/linkedin.png"
+                                        width="20px" style="vertical-align: middle; margin-right: 5px;" />
+                                </a>
+                                {/if}
+                                <a href={email_address_url}
+                                    style="font-size: 14px; font-weight: bold; text-decoration: underline; text-decoration-color: #101010; text-underline-offset: 4px; margin-left: 10px; color:black;">
+                                    <span style="vertical-align: middle;">{emailAddress}</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="empty"
+                                style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset;">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: top;">
+                                <address
+                                    style="font-size: 16px; letter-spacing: 0; line-height: 18px; font-style: normal;">
+                                    <span style="font-weight: bold; color: #2f308d;">e-Comas Sarl</span>, 68 Avenue de
+                                    la Liberté,<br>1930
+                                    Luxembourg, LUXEMBOURG
+                                </address>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="empty"
+                                style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset;">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="cta"
+                                style="font-family: Arial, Helvetica, sans-serif; vertical-align: top; font-size: 14px; line-height: 18px; font-weight: bold;">
+                                Download the <br /> e-Comas whitepaper:
+                                <a href="https://www.e-comas.com/white-paper-form.html"
+                                    style="font-weight: bold; color: #2f308d; letter-spacing: 0;">Amazon Marketing Cloud
+                                    Unpacked</a>.
+                            </td>
+                            {#if Note}
+                            <!-- <td class="note" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: top;">
+                {note_text}
+              </td> -->
+                            {/if}
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td
+                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding: 10px;">
+                &nbsp;</td>
+            <td
+                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; background-image: url(https://www.e-comas.com/docs/signatures/ressources/bg-2026.jpg);background-color: #2f308d ;background-position: 50% 100%; background-repeat: no-repeat;">
+                <table cellpadding="0" cellspacing="0" width="240px"
+                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate; margin: 0 auto;">
+                    <tbody>
+                        <tr>
+                            <td
+                                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: top; text-align: center;">
+                                <a href={companyURL}>
+                                    <img alt={companyLogo.alt} width={companyLogo.width} height={companyLogo.height}
+                                        src={companyLogo.src}
+                                        style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; border: none; display: block;">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset; text-align: center;">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset; text-align: center;">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- row of 4 logos -->
+                            <td>
+                                <table width="100%" cellpadding="0" cellspacing="0"
+                                    style="border-collapse: separate; table-layout: fixed; padding-inline: 5px;">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center" valign="middle" width="25%" height="53"
+                                                style="height: 53px; text-align: center; vertical-align: middle;">
+                                                <img alt="Marketplace"
+                                                    src="https://www.e-comas.com/docs/signatures/ressources/icons/Marketplace-2.png"
+                                                    width="53" height="53"
+                                                    style="display: inline-block; border: none; max-width: 53px; max-height: 53px; width: auto; height: auto;">
+                                            </td>
+
+                                            <td width="5" style="width: 5px; font-size: 1px;">&nbsp;</td>
+
+                                            <td align="center" valign="middle" width="25%" height="53"
+                                                style="padding: 0px; height: 53px; text-align: center; vertical-align: middle;">
+                                                <img alt="Distribution"
+                                                    src="https://www.e-comas.com/docs/signatures/ressources/icons/Distribution-2.png"
+                                                    width="53" height="53"
+                                                    style="display: inline-block; border: none; max-width: 53px; max-height: 53px; width: auto; height: auto;">
+                                            </td>
+
+                                            <td width="5" style="width: 5px; font-size: 1px;">&nbsp;</td>
+
+                                            <td align="center" valign="middle" width="25%" height="53"
+                                                style="padding: 0px; height: 53px; text-align: center; vertical-align: middle;">
+                                                <img alt="Digital Marketing"
+                                                    src="https://www.e-comas.com/docs/signatures/ressources/icons/DigitalMarketing-2.png"
+                                                    width="53" height="53"
+                                                    style="display: inline-block; border: none; max-width: 53px; max-height: 53px; width: auto; height: auto;">
+                                            </td>
+
+                                            <td width="5" style="width: 5px; font-size: 1px;">&nbsp;</td>
+
+                                            <td align="center" valign="middle" width="25%" height="53"
+                                                style="padding: 0px; height: 53px; text-align: center; vertical-align: middle;">
+                                                <img alt="Technology"
+                                                    src="https://www.e-comas.com/docs/signatures/ressources/icons/Technology-2.png"
+                                                    width="53" height="53"
+                                                    style="display: inline-block; border: none; max-width: 53px; max-height: 53px; width: auto; height: auto;">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset; text-align: center;">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset; text-align: center;">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset; text-align: center;">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: top; text-align: center;">
+                                {#each socialLinks as socialLink}
+                                <a href={socialLink.href} style="display: inline-block; margin: 0 2px;">
+                                    <img src={socialLink.src} alt={socialLink.alt} width="40" height="40"
+                                        style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; border: none; display: inline-block;">
+                                </a>
+                                {/each}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td class="empty" style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset;">
+                &nbsp;</td>
         </tr>
-      </tbody>
-    </table>`,
+        <tr>
+            <td class="empty" style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset;">
+                &nbsp;</td>
+            <td class="empty" style="font-size: 14px; font-family: unset; line-height: 12px; vertical-align: unset;">
+                &nbsp;</td>
+        </tr>
+        </td>
+        </tr>
+    </tbody>
+</table>`,
     sass
       .renderSync({
         file: fileURLToPath(new URL("./styles.scss", import.meta.url)),
