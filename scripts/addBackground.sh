@@ -1,3 +1,3 @@
 #!/bin/sh
 
-convert -background none background_shape.png "$1" -layers flatten "$2"
+convert "$1" -background white -alpha remove -gravity center -extent $(identify -format '%[fx:max(w,h)]' "$1")x$(identify -format '%[fx:max(w,h)]' "$1") "$2"
