@@ -314,7 +314,7 @@ process.stdout.write(
                                 style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: top; text-align: center;">
                                 {#each socialLinks as socialLink}
                                 <a href={socialLink.href} style="display: inline-block; margin: 0 2px;">
-                                    <img src={socialLink.src} alt={socialLink.alt} width="40" height="40"
+                                    <img src={socialLink.src} alt={socialLink.alt} width="22" height="22"
                                         style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; border: none; display: inline-block;">
                                 </a>
                                 {/each}
