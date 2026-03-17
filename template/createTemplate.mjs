@@ -226,7 +226,7 @@ process.stdout.write(
                                 style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: top; text-align: center;">
                                 <a href={companyURL}>
                                     <img alt={companyLogo.alt} src={companyLogo.src}
-                                        style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; border: none; display: block;">
+                                        style="-ms-interpolation-mode: bicubic; max-width: 90%; height: auto; border: none; display: block;">
                                 </a>
                             </td>
                         </tr>
