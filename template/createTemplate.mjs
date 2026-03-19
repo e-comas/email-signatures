@@ -246,7 +246,7 @@ process.stdout.write(
                             <!-- row of 4 logos -->
                             <td>
                                 <table width="100%" cellpadding="0" cellspacing="0"
-                                    style="border-collapse: separate; table-layout: fixed; padding-inline: 5px;">
+                                    style="border-collapse: separate; table-layout: fixed; padding-inline: 8px;">
                                     <tbody>
                                         <tr>
                                             <td align="center" valign="middle" width="25%" height="53"
@@ -257,7 +257,7 @@ process.stdout.write(
                                                     style="display: inline-block; border: none; max-width: 53px; max-height: 53px; width: auto; height: auto;">
                                             </td>
 
-                                            <td width="5" style="width: 5px; font-size: 1px;">&nbsp;</td>
+                                            <td width="4" style="width: 4px; font-size: 1px;">&nbsp;</td>
 
                                             <td align="center" valign="middle" width="25%" height="53"
                                                 style="padding: 0px; height: 53px; text-align: center; vertical-align: middle;">
@@ -267,7 +267,7 @@ process.stdout.write(
                                                     style="display: inline-block; border: none; max-width: 53px; max-height: 53px; width: auto; height: auto;">
                                             </td>
 
-                                            <td width="5" style="width: 5px; font-size: 1px;">&nbsp;</td>
+                                            <td width="4" style="width: 4px; font-size: 1px;">&nbsp;</td>
 
                                             <td align="center" valign="middle" width="25%" height="53"
                                                 style="padding: 0px; height: 53px; text-align: center; vertical-align: middle;">
@@ -277,7 +277,7 @@ process.stdout.write(
                                                     style="display: inline-block; border: none; max-width: 53px; max-height: 53px; width: auto; height: auto;">
                                             </td>
 
-                                            <td width="5" style="width: 5px; font-size: 1px;">&nbsp;</td>
+                                            <td width="4" style="width: 4px; font-size: 1px;">&nbsp;</td>
 
                                             <td align="center" valign="middle" width="25%" height="53"
                                                 style="padding: 0px; height: 53px; text-align: center; vertical-align: middle;">
