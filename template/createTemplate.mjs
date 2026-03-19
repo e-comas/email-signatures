@@ -170,7 +170,7 @@ process.stdout.write(
                                 {#if LinkedIn}
                                 <a href={LinkedIn}>
                                     <img alt="LinkedIn"
-                                        src="https://www.e-comas.com/docs/signatures/ressources/icons/socials/linkedin.png"
+                                        src="https://www.e-comas.com/docs/signatures/ressources/icons/socials-blue/linkedin.png"
                                         width="20px" style="vertical-align: middle; margin-right: 5px;" />
                                 </a>
                                 {/if}
