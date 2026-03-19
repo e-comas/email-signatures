@@ -139,11 +139,11 @@ process.stdout.write(
     <tbody>
         <tr>
             <td
-                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding: 20px;">
+                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding: 20px; background-color: white;">
                 <img alt="a pic" width={IMG_WIDTH} height={IMG_HEIGHT} src={pictureUrl}
                     style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; border: none;">
             </td>
-            <td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle;">
+            <td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle;background-color: white;">
                 <table cellpadding="0" cellspacing="0"
                     style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate;">
                     <tbody>
@@ -214,7 +214,7 @@ process.stdout.write(
                 </table>
             </td>
             <td
-                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding: 10px;">
+                style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding: 10px; background-color: white;">
                 &nbsp;</td>
             <td
                 style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; background-image: url(https://www.e-comas.com/docs/signatures/ressources/bg-2026.jpg);background-color: #2f308d ;background-position: 50% 100%; background-repeat: no-repeat;">
