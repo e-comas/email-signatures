@@ -108,7 +108,7 @@ process.stdout.write(html`
 process.stdout.write(
   _(
     html`<table id="signature" cellpadding="0" cellspacing="0"
-    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate; border: 1px solid black;">
+    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate;">
     <style>
         @media screen and (max-width: 645px) {
             #signature>tbody>tr {
