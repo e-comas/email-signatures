@@ -115,7 +115,7 @@ process.stdout.write(html`
 `);
 process.stdout.write(
   _(
-    html`<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="background-color: #ffffff; max-width: 900px; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate;">
+    html`<table id="signature" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="background-color: #ffffff; max-width: 900px; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate;">
     <tbody>
         <tr>
             <td bgcolor="#ffffff" style="background-color: #ffffff; font-size: 0; text-align: left; vertical-align: top; padding: 10px 10px;">
