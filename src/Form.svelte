@@ -39,14 +39,9 @@
       placeholder="Public URL to your LinkedIn profile (optional)"
     />
 
-    <div style="display: flex; align-items: center; margin-bottom: 10px;">
-      <label style="width: 100px; text-align: right; padding-right: 10px;">Entity</label>
-      
-      <!-- Purely DOM driven one-way binding. No mutating user.Entity! -->
-      <select 
-        name="Entity"
-        style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; min-width: 0;"
-      >
+    <label>
+      Entity
+      <select name="Entity">
         {#each entityOptions as option}
           <option 
             value={option.value} 
@@ -56,7 +51,7 @@
           </option>
         {/each}
       </select>
-    </div>
+    </label>
 
     <button type="submit">Save my information</button>
   </fieldset>
