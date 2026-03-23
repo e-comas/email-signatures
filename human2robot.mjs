@@ -2,7 +2,7 @@ import { createInterface } from "readline";
 import TOML from "@aduh95/toml";
 import phone from "phone";
 
-const info = ["Name", "Title", "Mail", "Phone"];
+const info = ["Name", "Title", "Mail", "Phone", "Entity"];
 const urls = ["LinkedIn", "Medium", "YouTube", "Twitter"];
 
 const garbageLines = [];
