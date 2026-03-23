@@ -114,19 +114,19 @@ process.stdout.write(html`
 
     const entityLogos = {
         "Marketplace": {
-            src: "https://www.e-comas.com/docs/signatures/ressources/icons/Marketplace-2.png",
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/favicons/Marketplace.png",
             alt: "Marketplace"
         },
         "Distribution": {
-            src: "https://www.e-comas.com/docs/signatures/ressources/icons/Distribution-2.png" ,
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/favicons/Distribution.png" ,
             alt: "Distribution"
         },
         "Digital Marketing": {
-            src: "https://www.e-comas.com/docs/signatures/ressources/icons/DigitalMarketing-2.png",
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/favicons/DigitalMarketing.png",
             alt: "Digital Marketing"
         },
         "Technology": {
-            src: "https://www.e-comas.com/docs/signatures/ressources/icons/Technology-2.png",
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/favicons/Technology.png",
             alt: "Technology"
         }
     }
@@ -176,7 +176,7 @@ process.stdout.write(
                                             {/if}
                                             <!-- Right Column: Name & Title -->
                                             <td valign="top" align="left">
-                                                <div style="font-size: 22px; line-height: 25px; color: #2f308d; letter-spacing: 0; margin: 0; padding-bottom: 5px;">
+                                                <div style="font-weight: bold; font-size: 22px; line-height: 25px; color: #2f308d; letter-spacing: 0; margin: 0; padding-bottom: 5px;">
                                                     {Name}
                                                 </div>
                                                 <div style="font-size: 18px; line-height: 18px; color: #404040; letter-spacing: 0; font-weight: bold; margin: 0;">
@@ -208,7 +208,7 @@ process.stdout.write(
                                         <tr>
                                             <td colspan="2" align="left" style="padding-bottom: 10px; line-height: 18px; font-size: 14px; color: #000000;">
                                                 <address style="font-style: normal; margin: 0;">
-                                                    <span style="font-weight: bold; color: #2f308d; font-size: 16px;">e-Comas Sarl</span><br>
+                                                    <span style="font-weight: bold; color: #2f308d; font-size: 16px;">e-Comas Sarl</span> 
                                                     68 Avenue de la Libert&eacute;,<br>1930 Luxembourg, LUXEMBOURG
                                                 </address>
                                             </td>
