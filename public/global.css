@@ -36,12 +36,17 @@ fieldset > button {
   width: fit-content;
   margin: 0 auto;
 }
-fieldset input {
+fieldset input, fieldset select  {
   border: 1px inset #0c195a;
   height: 2rem;
   padding: 0 10px;
   grid-column: 2;
   font-size: 1rem;
+}
+
+fieldset select {
+  justify-self: start;
+  cursor: pointer; /* Optional: makes it feel more like a button/dropdown */
 }
 
 button {
