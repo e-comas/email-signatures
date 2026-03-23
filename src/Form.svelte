@@ -39,15 +39,21 @@
       placeholder="Public URL to your LinkedIn profile (optional)"
     />
 
-    <!-- Entity Dropdown with Flexbox Alignment -->
     <div style="display: flex; align-items: center; margin-bottom: 10px;">
-      <label style="text-align: right; padding-right: 10px;">Entity</label>
+      <label style="width: 100px; text-align: right; padding-right: 10px;">Entity</label>
+      
+      <!-- Purely DOM driven one-way binding. No mutating user.Entity! -->
       <select 
-        bind:value={user.Entity}
+        name="Entity"
         style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; min-width: 0;"
       >
         {#each entityOptions as option}
-          <option value={option.value}>{option.label}</option>
+          <option 
+            value={option.value} 
+            selected={user.Entity === option.value}
+          >
+            {option.label}
+          </option>
         {/each}
       </select>
     </div>
