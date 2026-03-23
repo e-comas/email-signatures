@@ -47,7 +47,7 @@ process.stdout.write(html`
     export let user;
     export let emailAddress;
 
-    const { Name, Title, Phone, pictureUrl, LinkedIn } = user;
+    const { Name, Title, Phone, pictureUrl, LinkedIn, Entity } = user;
 
     const phone_url = "tel:" + Phone;
     const email_address_url = "mailto:" + emailAddress;
@@ -111,62 +111,113 @@ process.stdout.write(html`
             href: "https://www.linkedin.com/company/e-comas/",
         }
     ]
+
+    const entityLogos = {
+        "Marketplace": {
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/Marketplace-2.png",
+            alt: "Marketplace"
+        },
+        "Distribution": {
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/Distribution-2.png" ,
+            alt: "Distribution"
+        },
+        "Digital Marketing": {
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/entities/digital-marketing.png",
+            alt: "Digital Marketing"
+        },
+        "Technology": {
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/entities/technology.png",
+            alt: "Technology"
+        }
+    }
+
+    // --- NEW LOGIC: Determine the correct entity logo based on the Entity field ---
+    const entityLogo = Entity && entityLogos[Entity] ? entityLogos[Entity] : null;
   </script>
 `);
 process.stdout.write(
   _(
-    html`<table id="signature" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="background-color: #ffffff; max-width: 900px; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate;">
+    html`<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; max-width: 900px; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate;">
     <tbody>
         <tr>
-            <td bgcolor="#ffffff" style="background-color: #ffffff; font-size: 0; text-align: left; vertical-align: top; padding: 10px 10px;">
-                <table align="left" cellpadding="0" cellspacing="0" border="0" width="220" style="width: 220px; min-width: 220px; border-collapse: separate; margin-bottom: 20px;">
+            <!-- Main Wrapper TD: Now explicitly white so dark mode doesn't bleed through the gaps -->
+            <td bgcolor="#ffffff" style="font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; font-size: 0; text-align: left; vertical-align: top; padding: 10px 10px;">
+                
+                <!-- ========================================== -->
+                <!-- COLUMN 1: PROFILE PICTURE -->
+                <!-- ========================================== -->
+                <table align="left" cellpadding="0" cellspacing="0" border="0" width="220" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 220px; min-width: 220px; margin-bottom: 20px; border-collapse: separate;">
                     <tbody>
                         <tr>
-                            <td style="background-color: #ffffff; vertical-align: top; padding-right: 20px;">
-                                <img alt="Profile Picture" width="200" height="200" src="{pictureUrl}" style="-ms-interpolation-mode: bicubic; width: 200px; height: 200px; max-width: 200px; object-fit: cover; border: none; display: block;">
+                            <td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; background-color: #ffffff; vertical-align: top; padding-right: 20px;">
+                                <img alt="{Name}'s Profile Picture" width="200" height="200" src={pictureUrl} style="-ms-interpolation-mode: bicubic; width: 200px; height: 200px; max-width: 200px; object-fit: cover; border: none; display: block;">
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <table align="left" cellpadding="0" cellspacing="0" border="0" width="410" style="width: 410px; max-width: 100%; border-collapse: separate; margin-bottom: 20px;">
+
+                <!-- ========================================== -->
+                <!-- COLUMN 2: PERSONAL INFO -->
+                <!-- ========================================== -->
+                <table align="left" cellpadding="0" cellspacing="0" border="0" width="650" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 410px; max-width: 100%; margin-bottom: 20px; border-collapse: separate;">
                     <tbody>
                         <tr>
+                            <!-- Added height="240" and vertical-align: middle; so it aligns with the 240px right banner -->
                             <td height="240" valign="middle" style="height: 240px; background-color: #ffffff; color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding-right: 20px;">
-                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: separate;">
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; font-family: Arial, Helvetica, sans-serif;">
                                     <tbody>
+                                        <!-- HEADER GROUP: Icon + Name + Title -->
                                         <tr>
-                                            <th style="font-size: 22px; line-height: 25px; color: #2f308d; letter-spacing: 0; text-align: left; padding: 0 0 5px 0;">
-                                                {Name}
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <td style="color: #404040; font-size: 18px; font-weight: bold; letter-spacing: 0; line-height: 18px; padding-bottom: 10px;">
-                                                {Title}
+                                            <!-- Left Column: Icon (Conditional based on Entity) -->
+                                            {#if entityLogo}
+                                            <td width="60" valign="top" align="left" style="padding-right: 15px;">
+                                                <img alt={entityLogo.alt} src={entityLogo.src} width="53" height="53" style="display: block; border: none; width: 53px; height: 53px; max-width: 53px;" />
+                                            </td>
+                                            {/if}
+                                            <!-- Right Column: Name & Title -->
+                                            <td valign="top" align="left">
+                                                <div style="font-size: 22px; line-height: 25px; color: #2f308d; letter-spacing: 0; margin: 0; padding-bottom: 5px;">
+                                                    {Name}
+                                                </div>
+                                                <div style="font-size: 18px; line-height: 18px; color: #404040; letter-spacing: 0; font-weight: bold; margin: 0;">
+                                                    {Title}{#if Entity}, {Entity}{/if}
+                                                </div>
                                             </td>
                                         </tr>
+                                        
+                                        <!-- Spacer Row to separate header from body -->
                                         <tr>
-                                            <td style="color: #000000; line-height: 20px; font-size: 12px; letter-spacing: 0; vertical-align: middle; padding-bottom: 10px;">
+                                            <td colspan="2" height="10" style="line-height: 10px; font-size: 10px;"></td>
+                                        </tr>
+        
+                                        <!-- BODY: LinkedIn + Email -->
+                                        <tr>
+                                            <td colspan="2" align="left" style="padding-bottom: 10px;">
                                                 {#if LinkedIn}
-                                                <a href="{LinkedIn}" style="text-decoration: none; display: inline-block; vertical-align: middle;">
-                                                    <img alt="LinkedIn" src="{socialLinks_inv[0].src}" width="20" style="vertical-align: middle; margin-right: 5px; border: none; display: block;" />
+                                                <a href="localhost:8080" style="text-decoration: none; display: inline-block; vertical-align: middle; margin-right: 10px;">
+                                                    <img alt="LinkedIn" src={socialLinks_inv[0].src} width="20" style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; vertical-align: middle; border: none; display: block;" />
                                                 </a>
                                                 {/if}
-                                                <a href="{email_address_url}" style="font-size: 14px; font-weight: bold; text-decoration: underline; text-decoration-color: #101010; color: #000000; display: inline-block; vertical-align: middle;">
+                                                <a href={email_address_url} style="font-size: 14px; font-weight: bold; text-decoration: underline; text-decoration-color: #101010; color: #000000; display: inline-block; vertical-align: middle;">
                                                     {emailAddress}
                                                 </a>
                                             </td>
                                         </tr>
+        
+                                        <!-- BODY: Address -->
                                         <tr>
-                                            <td style="color: #000000; padding-bottom: 10px;">
-                                                <address style="font-size: 14px; letter-spacing: 0; line-height: 18px; font-style: normal; margin: 0;">
+                                            <td colspan="2" align="left" style="padding-bottom: 10px; line-height: 18px; font-size: 14px; color: #000000;">
+                                                <address style="font-style: normal; margin: 0;">
                                                     <span style="font-weight: bold; color: #2f308d; font-size: 16px;">e-Comas Sarl</span><br>
                                                     68 Avenue de la Libert&eacute;,<br>1930 Luxembourg, LUXEMBOURG
                                                 </address>
                                             </td>
                                         </tr>
+        
+                                        <!-- BODY: Whitepaper -->
                                         <tr>
-                                            <td style="color: #000000; font-size: 14px; line-height: 18px; font-weight: bold;">
-                                                Download the <br /> e-Comas whitepaper:
+                                            <td colspan="2" align="left" style="padding-bottom: 10px; line-height: 18px; font-size: 14px; font-weight: bold; color: #000000;">
+                                                Download the <br> e-Comas whitepaper:
                                                 <a href="https://www.e-comas.com/white-paper-form.html" style="font-weight: bold; color: #2f308d; letter-spacing: 0;">Amazon Marketing Cloud Unpacked</a>.
                                             </td>
                                         </tr>
@@ -176,69 +227,12 @@ process.stdout.write(
                         </tr>
                     </tbody>
                 </table>
-                <table align="left" cellpadding="0" cellspacing="0" border="0" width="240" height="240" style="width: 240px; height: 240px; min-width: 240px; border-collapse: separate; margin-bottom: 20px;">
-                    <tbody>
-                        <tr>
-                            <td background="https://www.e-comas.com/docs/signatures/ressources/bg-2026.jpg" bgcolor="#2f308d" width="240" height="240" valign="middle" style="width: 240px; height: 240px; font-family: Arial, Helvetica, sans-serif; font-size: 14px; background-image: url('https://www.e-comas.com/docs/signatures/ressources/bg-2026.jpg'); background-color: #2f308d; background-size: cover; background-position: center; background-repeat: no-repeat;">
-                                <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%" style="border-collapse: separate;">
-                                    <tbody>
-                                        <tr>
-                                            <td style="vertical-align: middle;">
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: separate;">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td align="center" style="text-align: center; padding: 0 15px 15px 15px;">
-                                                                <a href="{companyURL}">
-                                                                    <img alt="{companyLogo.alt}" src="{companyLogo.src}" style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; border: none; display: block; margin: 0 auto;">
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-bottom: 15px;">
-                                                                <table width="240" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; table-layout: fixed;">
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td width="8" style="width: 8px; font-size: 1px; line-height: 1px;">&nbsp;</td>
-                                                                            <td width="53" align="center" valign="middle" style="width: 53px; font-size: 0; line-height: 0;">
-                                                                                <img alt="Marketplace" src="https://www.e-comas.com/docs/signatures/ressources/icons/Marketplace-2.png" width="53" height="53" style="display: block; border: none; width: 53px; height: 53px; max-width: 53px;">
-                                                                            </td>
-                                                                            <td width="4" style="width: 4px; font-size: 1px; line-height: 1px;">&nbsp;</td>
-                                                                            <td width="53" align="center" valign="middle" style="width: 53px; font-size: 0; line-height: 0;">
-                                                                                <img alt="Distribution" src="https://www.e-comas.com/docs/signatures/ressources/icons/Distribution-2.png" width="53" height="53" style="display: block; border: none; width: 53px; height: 53px; max-width: 53px;">
-                                                                            </td>
-                                                                            <td width="4" style="width: 4px; font-size: 1px; line-height: 1px;">&nbsp;</td>
-                                                                            <td width="53" align="center" valign="middle" style="width: 53px; font-size: 0; line-height: 0;">
-                                                                                <img alt="Digital Marketing" src="https://www.e-comas.com/docs/signatures/ressources/icons/DigitalMarketing-2.png" width="53" height="53" style="display: block; border: none; width: 53px; height: 53px; max-width: 53px;">
-                                                                            </td>
-                                                                            <td width="4" style="width: 4px; font-size: 1px; line-height: 1px;">&nbsp;</td>
-                                                                            <td width="53" align="center" valign="middle" style="width: 53px; font-size: 0; line-height: 0;">
-                                                                                <img alt="Technology" src="https://www.e-comas.com/docs/signatures/ressources/icons/Technology-2.png" width="53" height="53" style="display: block; border: none; width: 53px; height: 53px; max-width: 53px;">
-                                                                            </td>
-                                                                            <td width="8" style="width: 8px; font-size: 1px; line-height: 1px;">&nbsp;</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align="center" style="text-align: center; padding: 0 15px 0 15px;">
-                                                                {#each socialLinks as socialLink}
-                                                                <a href="{socialLink.href}" style="display: inline-block; margin: 0 2px; text-decoration: none;">
-                                                                    <img src="{socialLink.src}" alt="{socialLink.alt}" width="22" height="22" style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; border: none; display: block;">
-                                                                </a>
-                                                                {/each}
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <!-- ========================================== -->
+                <!-- COLUMN 3: COMPANY BANNER (Fixed 240x240) -->
+                <!-- ========================================== -->
+
+
             </td>
         </tr>
     </tbody>
