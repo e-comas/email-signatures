@@ -122,11 +122,11 @@ process.stdout.write(html`
             alt: "Distribution"
         },
         "Digital Marketing": {
-            src: "https://www.e-comas.com/docs/signatures/ressources/icons/entities/digital-marketing.png",
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/DigitalMarketing-2.png",
             alt: "Digital Marketing"
         },
         "Technology": {
-            src: "https://www.e-comas.com/docs/signatures/ressources/icons/entities/technology.png",
+            src: "https://www.e-comas.com/docs/signatures/ressources/icons/Technology-2.png",
             alt: "Technology"
         }
     }

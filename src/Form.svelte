@@ -46,7 +46,7 @@
       <select 
         id="Entity" 
         name="Entity" 
-        bind:value={Entity}
+        bind:value={user.Entity}
         style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;"
       >
         {#each entityOptions as option}
