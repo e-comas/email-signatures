@@ -159,7 +159,7 @@ process.stdout.write(
                 <!-- ========================================== -->
                 <!-- COLUMN 2: PERSONAL INFO -->
                 <!-- ========================================== -->
-                <table align="left" cellpadding="0" cellspacing="0" border="0" width="650" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 410px; max-width: 100%; margin-bottom: 20px; border-collapse: separate;">
+                <table align="left" cellpadding="0" cellspacing="0" border="0" width="650" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 650px; max-width: 100%; margin-bottom: 20px; border-collapse: separate;">
                     <tbody>
                         <tr>
                             <!-- Added height="240" and vertical-align: middle; so it aligns with the 240px right banner -->
