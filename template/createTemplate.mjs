@@ -137,16 +137,16 @@ process.stdout.write(html`
 `);
 process.stdout.write(
   _(
-    html`<table id="signature" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; max-width: 640px; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate;">
+    html`<table id="signature" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; max-width: 600px; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate;">
     <tbody>
         <tr>
             <!-- Main Wrapper TD: Now explicitly white so dark mode doesn't bleed through the gaps -->
-            <td bgcolor="#ffffff" style="font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; font-size: 0; text-align: left; vertical-align: top;">
+            <td bgcolor="#ffffff" style="padding:0; font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; font-size: 0; text-align: left; vertical-align: top;">
                 
                 <!-- ========================================== -->
                 <!-- COLUMN 1: PROFILE PICTURE -->
                 <!-- ========================================== -->
-                <table align="left" cellpadding="0" cellspacing="0" border="0" width="220" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 220px; min-width: 220px; margin-bottom: 20px; border-collapse: separate;">
+                <table align="left" cellpadding="0" cellspacing="0" border="0" width="200" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 200px; min-width: 200px; margin-bottom: 20px; border-collapse: separate;">
                     <tbody>
                         <tr>
                             <td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; background-color: #ffffff; vertical-align: top;">
@@ -159,11 +159,10 @@ process.stdout.write(
                 <!-- ========================================== -->
                 <!-- COLUMN 2: PERSONAL INFO -->
                 <!-- ========================================== -->
-                <table align="left" cellpadding="0" cellspacing="0" border="0" width="420" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 420px; max-width: 100%; margin-bottom: 20px; border-collapse: separate; padding-left: 20px;">
+                <table align="left" cellpadding="0" cellspacing="0" border="0" width="400" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 400px; max-width: 100%; margin-bottom: 20px; border-collapse: separate; padding-left: 10px;">
                     <tbody>
                         <tr>
-                            <!-- Added height="240" and vertical-align: middle; so it aligns with the 240px right banner -->
-                            <td height="240" valign="middle" style="height: 240px; background-color: #ffffff; color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding-right: 20px;">
+                            <td height="200" valign="middle" style="height: 200px; background-color: #ffffff; color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding-right: 20px;">
                                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; font-family: Arial, Helvetica, sans-serif;">
                                     <tbody>
                                         <!-- HEADER GROUP: Icon + Name + Title -->
