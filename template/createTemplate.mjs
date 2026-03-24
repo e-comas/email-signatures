@@ -149,7 +149,7 @@ process.stdout.write(
                 <table align="left" cellpadding="0" cellspacing="0" border="0" width="220" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 220px; min-width: 220px; margin-bottom: 20px; border-collapse: separate;">
                     <tbody>
                         <tr>
-                            <td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; background-color: #ffffff; vertical-align: top; padding-right: 20px;">
+                            <td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; background-color: #ffffff; vertical-align: top;">
                                 <img alt="{Name}'s Profile Picture" width="200" height="200" src={pictureUrl} style="-ms-interpolation-mode: bicubic; width: 200px; height: 200px; max-width: 200px; object-fit: cover; border: none; display: block;">
                             </td>
                         </tr>
@@ -159,7 +159,7 @@ process.stdout.write(
                 <!-- ========================================== -->
                 <!-- COLUMN 2: PERSONAL INFO -->
                 <!-- ========================================== -->
-                <table align="left" cellpadding="0" cellspacing="0" border="0" width="420" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 420px; max-width: 100%; margin-bottom: 20px; border-collapse: separate;">
+                <table align="left" cellpadding="0" cellspacing="0" border="0" width="420" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 420px; max-width: 100%; margin-bottom: 20px; border-collapse: separate; padding-left: 20px;">
                     <tbody>
                         <tr>
                             <!-- Added height="240" and vertical-align: middle; so it aligns with the 240px right banner -->
