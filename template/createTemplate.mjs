@@ -141,7 +141,7 @@ process.stdout.write(
     <tbody>
         <tr>
             <!-- Main Wrapper TD: Now explicitly white so dark mode doesn't bleed through the gaps -->
-            <td bgcolor="#ffffff" style="font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; font-size: 0; text-align: left; vertical-align: top; padding: 10px 10px;">
+            <td bgcolor="#ffffff" style="font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; font-size: 0; text-align: left; vertical-align: top;">
                 
                 <!-- ========================================== -->
                 <!-- COLUMN 1: PROFILE PICTURE -->
