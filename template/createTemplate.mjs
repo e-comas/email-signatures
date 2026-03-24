@@ -137,7 +137,7 @@ process.stdout.write(html`
 `);
 process.stdout.write(
   _(
-    html`<table id="signature" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; max-width: 900px; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate;">
+    html`<table id="signature" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; max-width: 640px; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: separate;">
     <tbody>
         <tr>
             <!-- Main Wrapper TD: Now explicitly white so dark mode doesn't bleed through the gaps -->
@@ -159,7 +159,7 @@ process.stdout.write(
                 <!-- ========================================== -->
                 <!-- COLUMN 2: PERSONAL INFO -->
                 <!-- ========================================== -->
-                <table align="left" cellpadding="0" cellspacing="0" border="0" width="650" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 650px; max-width: 100%; margin-bottom: 20px; border-collapse: separate;">
+                <table align="left" cellpadding="0" cellspacing="0" border="0" width="420" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 420px; max-width: 100%; margin-bottom: 20px; border-collapse: separate;">
                     <tbody>
                         <tr>
                             <!-- Added height="240" and vertical-align: middle; so it aligns with the 240px right banner -->
