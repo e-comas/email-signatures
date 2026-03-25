@@ -133,6 +133,9 @@ process.stdout.write(html`
 
     // --- NEW LOGIC: Determine the correct entity logo based on the Entity field ---
     const entityLogo = Entity && entityLogos[Entity] ? entityLogos[Entity] : null;
+
+    // replace spaces with nsbp in the Entity name
+    const entityName = Entity ? Entity.replace(/ /g, "&nbsp;") : null;
   </script>
 `);
 process.stdout.write(
@@ -156,42 +159,41 @@ process.stdout.write(
                     </tbody>
                 </table>
 
-                <!-- ========================================== -->
                 <!-- COLUMN 2: PERSONAL INFO -->
                 <!-- ========================================== -->
                 <table align="left" cellpadding="0" cellspacing="0" border="0" width="400" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 400px; max-width: 100%; margin-bottom: 20px; border-collapse: separate; padding-left: 10px;">
                     <tbody>
                         <tr>
-                            <td height="200" valign="middle" style="height: 200px; background-color: #ffffff; color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding-right: 20px;">
-                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; font-family: Arial, Helvetica, sans-serif;">
+                            <td height="200" valign="middle" bgcolor="#ffffff" style="height: 200px; background-color: #ffffff; color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding-right: 20px;">
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="border-collapse: collapse; background-color: #ffffff; font-family: Arial, Helvetica, sans-serif;">
                                     <tbody>
                                         <!-- HEADER GROUP: Icon + Name + Title -->
                                         <tr>
-                                            <!-- Left Column: Icon (Conditional based on Entity) -->
                                             {#if entityLogo}
-                                            <td width="60" valign="top" align="left" style="padding-right: 15px;">
+                                            <td width="60" valign="top" align="left" bgcolor="#ffffff" style="padding-right: 15px; background-color: #ffffff;">
                                                 <img alt={entityLogo.alt} src={entityLogo.src} width="53" height="53" style="display: block; border: none; width: 53px; height: 53px; max-width: 53px;" />
                                             </td>
                                             {/if}
                                             <!-- Right Column: Name & Title -->
-                                            <td valign="top" align="left">
+                                            <td valign="top" align="left" bgcolor="#ffffff" style="background-color: #ffffff;">
                                                 <div style="font-weight: bold; font-size: 22px; line-height: 25px; color: #2f308d; letter-spacing: 0; margin: 0; padding-bottom: 5px;">
                                                     {Name}
                                                 </div>
-                                                <div style="font-size: 18px; line-height: 18px; color: #404040; letter-spacing: 0; font-weight: bold; margin: 0;">
-                                                    {Title}{#if Entity}, {Entity}{/if}
+                                                <div style="font-size: 16px; line-height: 18px; color: #404040; letter-spacing: 0; font-weight: bold; margin: 0;">
+                                                    {Title}{#if Entity}, {entityName}{/if}
                                                 </div>
                                             </td>
                                         </tr>
                                         
-                                        <!-- Spacer Row to separate header from body -->
+                                        <!-- Spacer Row -->
                                         <tr>
-                                            <td colspan="2" height="10" style="line-height: 10px; font-size: 10px;"></td>
+                                            <td colspan="2" height="10" bgcolor="#ffffff" style="line-height: 10px; font-size: 10px; background-color: #ffffff;"></td>
                                         </tr>
         
                                         <!-- BODY: LinkedIn + Email -->
                                         <tr>
-                                            <td colspan="2" align="left" style="padding-bottom: 10px;">
+                                            <!-- FIX 4: Add bgcolor here too -->
+                                            <td colspan="2" align="left" bgcolor="#ffffff" style="padding-bottom: 10px; background-color: #ffffff;">
                                                 {#if LinkedIn}
                                                 <a href="localhost:8080" style="text-decoration: none; display: inline-block; vertical-align: middle; margin-right: 10px;">
                                                     <img alt="LinkedIn" src={socialLinks_inv[0].src} width="20" style="-ms-interpolation-mode: bicubic; max-width: 100%; height: auto; vertical-align: middle; border: none; display: block;" />
@@ -205,7 +207,7 @@ process.stdout.write(
         
                                         <!-- BODY: Address -->
                                         <tr>
-                                            <td colspan="2" align="left" style="padding-bottom: 10px; line-height: 18px; font-size: 14px; color: #000000;">
+                                            <td colspan="2" align="left" bgcolor="#ffffff" style="padding-bottom: 10px; line-height: 18px; font-size: 14px; color: #000000; background-color: #ffffff;">
                                                 <address style="font-style: normal; margin: 0;">
                                                     <span style="font-weight: bold; color: #2f308d; font-size: 16px;">e-Comas Sarl</span> 
                                                     68 Avenue de la Libert&eacute;,<br>1930 Luxembourg, LUXEMBOURG
@@ -215,8 +217,8 @@ process.stdout.write(
         
                                         <!-- BODY: Whitepaper -->
                                         <tr>
-                                            <td colspan="2" align="left" style="padding-bottom: 10px; line-height: 18px; font-size: 14px; font-weight: bold; color: #000000;">
-                                                Download the <br> e-Comas whitepaper:
+                                            <td colspan="2" align="left" bgcolor="#ffffff" style="padding-bottom: 10px; line-height: 18px; font-size: 14px; font-weight: bold; color: #000000; background-color: #ffffff;">
+                                                Download the e-Comas whitepaper: <br>
                                                 <a href="https://www.e-comas.com/white-paper-form.html" style="font-weight: bold; color: #2f308d; letter-spacing: 0;">Amazon Marketing Cloud Unpacked</a>.
                                             </td>
                                         </tr>
@@ -226,11 +228,6 @@ process.stdout.write(
                         </tr>
                     </tbody>
                 </table>
-
-                <!-- ========================================== -->
-                <!-- COLUMN 3: COMPANY BANNER (Fixed 240x240) -->
-                <!-- ========================================== -->
-
 
             </td>
         </tr>
