@@ -123,7 +123,7 @@
       formData.pictureUrl = `${CDN}/${email.substring(
         0,
         email.indexOf("@")
-      )}.jpg`;
+      )}.png`;
       userData.newUser = false;
       const text = [...stringifyUser(email, formData)].join("\n");
       requests.push({

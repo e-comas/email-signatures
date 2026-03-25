@@ -4,18 +4,14 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
-// const INPUT_DIR = new URL("./", import.meta.url);
-// const OUTPUT_DIR = new URL("./out/", import.meta.url);
-
 const [, , input, output] = process.argv;
 
-const TARGET_DIMENSION = 200 * 2;
-const TARGET_SIZE = 15 << 10;
+const TARGET_DIMENSION = 200*2;
+const TARGET_SIZE = 32 << 10;
 
 const getImagePool = (async function* generateImagePool() {
   let imagePool, closeImagePool;
   // Lazy-load libSquoosh as it registers globals clashing with other packages.
-  // @see https://github.com/GoogleChromeLabs/squoosh/issues/1152
   const squoosh = await import("@squoosh/lib");
   do {
     const imagePoolClosing = new Promise((resolve) => {
@@ -33,14 +29,15 @@ const getImagePool = (async function* generateImagePool() {
 
 function* dichotomy() {
   let cache = new Map();
-  let max = 100;
-  let min = 50;
+  // Color Quantization maxes at 256 colors and mins at 2.
+  let max = 256;
+  let min = 2;
   let nextCurrent = (max + min) / 2;
   let current;
+  
   do {
     current = Math.round(nextCurrent);
     const imgData = yield current;
-    // console.log({ current, imgData });
     cache.set(current, imgData);
     if (imgData.size > TARGET_SIZE) {
       nextCurrent = (current + min) / 2;
@@ -50,25 +47,36 @@ function* dichotomy() {
       min = current;
     }
   } while (max - min > 1);
-  if (cache.get(current - 1) == null) {
-    cache.set(current - 1, yield current - 1);
-  }
-  if (cache.get(current + 1) == null) {
-    cache.set(current + 1, yield current + 1);
-  }
-  if (cache.get(current - 2) == null) {
-    cache.set(current - 2, yield current - 2);
-  }
-  if (cache.get(current + 2) == null) {
-    cache.set(current + 2, yield current + 2);
+
+  const checkAndYield = function* (val) {
+    if (val >= 2 && val <= 256 && cache.get(val) == null) {
+      cache.set(val, yield val);
+    }
+  };
+
+  yield* checkAndYield(current - 1);
+  yield* checkAndYield(current + 1);
+  yield* checkAndYield(current - 2);
+  yield* checkAndYield(current + 2);
+
+  let bestEntry = null;
+  let fallbackEntry = null;
+
+  for (const [colors, imgData] of cache.entries()) {
+    // 1. Look for the smallest size that still satisfies >= TARGET_SIZE
+    if (imgData.size >= TARGET_SIZE) {
+      if (bestEntry === null || imgData.size < bestEntry.imgData.size) {
+        bestEntry = { colors, imgData };
+      }
+    }
+    // 2. Track the absolute largest size just in case max quality is still < TARGET_SIZE
+    if (fallbackEntry === null || imgData.size > fallbackEntry.imgData.size) {
+      fallbackEntry = { colors, imgData };
+    }
   }
 
-  return Array.from(cache.values()).reduce((pv, cv) =>
-    pv == null ||
-    Math.abs(cv.size - TARGET_SIZE) < Math.abs(pv.size - TARGET_SIZE)
-      ? cv
-      : pv
-  );
+  // Return best match >= target, or default to highest quality if target unreachable
+  return bestEntry || fallbackEntry;
 }
 
 export async function optimizeMatrix(url) {
@@ -86,17 +94,18 @@ export async function optimizeMatrix(url) {
   const scale =
     TARGET_DIMENSION /
     (originalHeight > originalWidth ? originalWidth : originalHeight);
-  const width = originalWidth * scale;
-  const height = originalHeight * scale;
+    
+  const width = Math.round(originalWidth * scale);
+  const height = Math.round(originalHeight * scale);
 
-  const qualityGenerator = dichotomy();
+  const colorGenerator = dichotomy();
   let imgData;
 
   while (true) {
-    const { done, value } = qualityGenerator.next(imgData);
+    const { done, value } = colorGenerator.next(imgData);
     if (done) {
       closeImagePool();
-      return value;
+      return value; 
     }
 
     await image.preprocess({
@@ -105,9 +114,14 @@ export async function optimizeMatrix(url) {
         width,
         height,
       },
+      quant: {
+        enabled: true,
+        numColors: value,
+        dither: 1.0, 
+      },
     });
 
-    await image.encode({ mozjpeg: { quality: value } });
+    await image.encode({ oxipng: { level: 2 } });
 
     for (const encodedImage of Object.values(image.encodedWith)) {
       imgData = await encodedImage;
@@ -117,17 +131,17 @@ export async function optimizeMatrix(url) {
 
 {
   if (!input || !output) {
-    throw new Error("Usage: ./optimizeImageSize.mjs input.png output.jpg");
+    throw new Error("Usage: ./optimizeImageSize.mjs input.png output.png");
   }
-  console.log({input, output})
-  const imgData = await optimizeMatrix(path.resolve(input));
+  console.log({ input, output });
+  const result = await optimizeMatrix(path.resolve(input));
   console.log({
-    quality: imgData.optionsUsed.quality,
-    size: imgData.size,
-    kb: imgData.size >> 10,
+    numColors: result.colors,
+    size: result.imgData.size,
+    kb: (result.imgData.size / 1024).toFixed(2), // slightly more readable than bitshift
   });
-  await fs.writeFile(path.resolve(output), imgData.binary);
-  console.log('done')
+  await fs.writeFile(path.resolve(output), result.imgData.binary);
+  console.log("done");
 }
 
 // await fs.mkdir(OUTPUT_DIR, { recursive: true });
