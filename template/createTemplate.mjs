@@ -218,7 +218,7 @@ process.stdout.write(
                                         <tr>
                                             <td colspan="2" align="left" bgcolor="#ffffff" style="line-height: 18px; font-size: 14px; font-weight: bold; color: #000000; background-color: #ffffff;">
                                                 Download the e-Comas whitepaper: <br>
-                                                <a href="https://www.e-comas.com/white-paper-form.html" style="font-weight: bold; color: #2f308d; letter-spacing: 0;">Amazon Marketing Cloud Unpacked</a>.
+                                                <a href="https://bit.ly/3TWpi2Z" style="font-weight: bold; color: #2f308d; letter-spacing: 0;">Amazon Marketing Cloud Unpacked</a>.
                                             </td>
                                         </tr>
                                     </tbody>
