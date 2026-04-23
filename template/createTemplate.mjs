@@ -131,11 +131,10 @@ process.stdout.write(html`
         }
     }
 
-    // --- NEW LOGIC: Determine the correct entity logo based on the Entity field ---
     const entityLogo = Entity && entityLogos[Entity] ? entityLogos[Entity] : null;
 
-    // replace spaces with nsbp in the Entity name
-    const entityName = Entity ? Entity.replace(/ /g, "&nbsp;") : null;
+    const entityName = Entity ? Entity.replace(/ /g, String.fromCharCode(160)) : null;
+
   </script>
 `);
 process.stdout.write(
@@ -164,7 +163,7 @@ process.stdout.write(
                 <table align="left" cellpadding="0" cellspacing="0" border="0" width="400" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 400px; max-width: 100%; margin-bottom: 20px; border-collapse: separate; padding-left: 10px;">
                     <tbody>
                         <tr>
-                            <td height="200" valign="middle" bgcolor="#ffffff" style="height: 200px; background-color: #ffffff; color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: middle; padding-right: 20px;">
+                            <td height="200" valign="middle" bgcolor="#ffffff" style="height: 200px; background-color: #ffffff; color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 14px; vertical-align: bottom; padding-right: 20px;">
                                 <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="border-collapse: collapse; background-color: #ffffff; font-family: Arial, Helvetica, sans-serif;">
                                     <tbody>
                                         <!-- HEADER GROUP: Icon + Name + Title -->
@@ -217,7 +216,7 @@ process.stdout.write(
         
                                         <!-- BODY: Whitepaper -->
                                         <tr>
-                                            <td colspan="2" align="left" bgcolor="#ffffff" style="padding-bottom: 10px; line-height: 18px; font-size: 14px; font-weight: bold; color: #000000; background-color: #ffffff;">
+                                            <td colspan="2" align="left" bgcolor="#ffffff" style="line-height: 18px; font-size: 14px; font-weight: bold; color: #000000; background-color: #ffffff;">
                                                 Download the e-Comas whitepaper: <br>
                                                 <a href="https://www.e-comas.com/white-paper-form.html" style="font-weight: bold; color: #2f308d; letter-spacing: 0;">Amazon Marketing Cloud Unpacked</a>.
                                             </td>
