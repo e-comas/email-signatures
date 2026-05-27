@@ -73,7 +73,7 @@ process.stdout.write(html`
     const companyURL = "https://e-comas.com";
     const companyLogo = {
         alt: "e-Comas, eCommerce made simple",
-        src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/logo.png",
+        src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/logo.png",
         width: 136,
         height: 33,
     };
@@ -83,22 +83,22 @@ process.stdout.write(html`
 
     const socialLinks = [
         {
-            src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/socials/linkedin.png",
+            src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/socials/linkedin.png",
             alt: "LinkedIn",
             href: "https://www.linkedin.com/company/e-comas/",
         },
         {
-            src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/socials/youtube.png",
+            src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/socials/youtube.png",
             alt: "YouTube",
             href: "https://www.youtube.com/channel/UClCYdUcUs1zJk8O3a4lC9lw",
         },
         {
-            src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/socials/facebook.png",
+            src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/socials/facebook.png",
             alt: "Facebook",
             href: "https://www.facebook.com/ecomas.ecommerce.made.simple/",
         },
         {
-            src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/socials/instagram.png",
+            src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/socials/instagram.png",
             alt: "Instagram",
             href: "https://www.instagram.com/ecomas.ecommerce.made.simple/",
         },
@@ -106,7 +106,7 @@ process.stdout.write(html`
 
     const socialLinks_inv = [
        {
-            src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/socials-blue/linkedin.png",
+            src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/socials-blue/linkedin.png",
             alt: "LinkedIn",
             href: "https://www.linkedin.com/company/e-comas/",
         }
@@ -114,19 +114,19 @@ process.stdout.write(html`
 
     const entityLogos = {
         "Marketplace": {
-            src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/favicons/Marketplace.png",
+            src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/favicons/Marketplace.png",
             alt: "Marketplace"
         },
         "Distribution": {
-            src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/favicons/Distribution.png" ,
+            src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/favicons/Distribution.png" ,
             alt: "Distribution"
         },
         "Digital Marketing": {
-            src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/favicons/DigitalMarketing.png",
+            src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/favicons/DigitalMarketing.png",
             alt: "Digital Marketing"
         },
         "Technology": {
-            src: "https://www.e-comas.githiub.io/docs/signatures/ressources/icons/favicons/Technology.png",
+            src: "https://e-comas.githiub.io/docs/signatures/ressources/icons/favicons/Technology.png",
             alt: "Technology"
         }
     }
