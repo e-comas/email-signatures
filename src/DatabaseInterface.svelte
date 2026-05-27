@@ -7,7 +7,7 @@
   import ClipboardHandler from "./ClipboardHandler.svelte";
   import gAPIData from "./gAPICredentials.json";
 
-  const CDN = "https://www.e-comas.com/docs/signatures/ressources";
+  const CDN = "https://www.e-comas.github.io/docs/signatures/ressources";
   const { documentId } = gAPIData;
 
   function* stringifySubTable(subTableName: string, subTable: any) {
