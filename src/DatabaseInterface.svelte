@@ -6,6 +6,7 @@
   import Preview from "./Template.svelte";
   import ClipboardHandler from "./ClipboardHandler.svelte";
   import gAPIData from "./gAPICredentials.json";
+  import { getUserInfo, documentsApi } from "./gdocs.js";
 
   const CDN = "https://e-comas.github.io/docs/signatures/ressources";
   const { documentId } = gAPIData;
@@ -74,9 +75,23 @@
     return Object.values(content).map(exploreGDoc).join("");
   }
 
+  // Signature themes, one entry per company domain (see the themes
+  // object in template/createTemplate.mjs). Display-only: the choice
+  // is not stored in the database.
+  const domainOptions = [
+    { value: "e-comas.com", label: "e-comas.com" },
+    { value: "ezy-distribution.com", label: "ezy-distribution.com" },
+  ];
+
+  let domain = "e-comas.com";
+  const defaultDomainFor = (email) =>
+    domainOptions.some((d) => email.endsWith("@" + d.value))
+      ? email.split("@")[1]
+      : "e-comas.com";
+
   let loadUserData = Promise.all([
     TOML.default(tomlParserUrl),
-    gapi.client.docs.documents.get({ documentId }),
+    documentsApi.get({ documentId }),
     location.hash.includes("@")
       ? Promise.resolve({ result: { email: location.hash.slice(1) } })
       : gapi.client.request({ method: "GET", path: "/userinfo/v2/me" }),
@@ -92,14 +107,17 @@
   window.addEventListener("hashchange", () => {
     if (location.hash.includes("@")) {
       const email = location.hash.slice(1);
-      loadUserData = gapi.client.docs.documents
+      loadUserData = documentsApi
         .get({ documentId })
-        .then((data) => [
-          parseTOMLGDoc(data)[email] ?? {
-            newUser: true,
-          },
-          email,
-        ]);
+        .then((data) => {
+          domain = defaultDomainFor(email);
+          return [
+            parseTOMLGDoc(data)[email] ?? {
+              newUser: true,
+            },
+            email,
+          ];
+        });
     }
   });
 
@@ -134,7 +152,7 @@
       });
       loadUserData = Promise.resolve([TOML.parse(text)[email], email]);
     } else if (JSON.stringify(userData) !== JSON.stringify(formData)) {
-      const data = await gapi.client.docs.documents.get({ documentId });
+      const data = await documentsApi.get({ documentId });
       const lines = data.result.body.content.flatMap(
         (p) =>
           p.paragraph?.elements.map(({ startIndex, endIndex, textRun }) => ({
@@ -209,7 +227,7 @@
     }
 
     if (requests.length) {
-      await gapi.client.docs.documents.batchUpdate({
+      await documentsApi.batchUpdate({
         documentId,
         requests,
       });
@@ -224,7 +242,15 @@
   <Form user={userData} {onsubmit} />
   {#if !userData.newUser}
     <hr />
-    <Preview user={userData} emailAddress={email} />
+    <label>
+      Signature domain
+      <select bind:value={domain}>
+        {#each domainOptions as option}
+          <option value={option.value}>{option.label}</option>
+        {/each}
+      </select>
+    </label>
+    <Preview user={userData} emailAddress={email} domain={domain} />
     <hr />
     <ClipboardHandler />
   {/if}
