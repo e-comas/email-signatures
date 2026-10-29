@@ -94,14 +94,18 @@
     documentsApi.get({ documentId }),
     location.hash.includes("@")
       ? Promise.resolve({ result: { email: location.hash.slice(1) } })
-      : gapi.client.request({ method: "GET", path: "/userinfo/v2/me" }),
-  ]).then(([_, data, userData]) => [
-    parseTOMLGDoc(data)[userData.result.email] ?? {
-      Name: userData.result.name,
-      newUser: true,
-    },
-    userData.result.email,
-  ]);
+      : getUserInfo(),
+  ]).then(([_, data, userData]) => {
+    const email = userData.result.email;
+    domain = defaultDomainFor(email);
+    return [
+      parseTOMLGDoc(data)[email] ?? {
+        Name: userData.result.name,
+        newUser: true,
+      },
+      email,
+    ];
+  });
   loadUserData.catch(console.error);
 
   window.addEventListener("hashchange", () => {

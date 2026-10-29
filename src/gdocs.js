@@ -206,7 +206,7 @@ export function disconnect() {
  *  restrictions do not block the OpenID Connect API.
  */
 export function getUserInfo() {
-  return fetchApi("/oauth2/v2/userinfo");
+  return fetchApi("/oauth2/v3/userinfo"); // Changed v2 to v3
 }
 
 import "https://apis.google.com/js/api.js";
