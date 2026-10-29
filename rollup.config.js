@@ -8,9 +8,45 @@ import sveltePreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
 import css from "rollup-plugin-css-only";
 import url from "@rollup/plugin-url";
-import copy from "rollup-plugin-copy";
+import { readdirSync, readFileSync } from "node:fs";
+import path from "node:path";
 
 const production = !process.env.ROLLUP_WATCH;
+
+// @aduh95/format-phone-number fetches one JSON file per country code at
+// runtime, relative to import.meta.url. That breaks in the production
+// build, where the whole bundle is inlined into index.html:
+// import.meta.url then points at the HTML document, so the data files
+// (served under /build/data/) are requested from the site root and 404.
+// Inline the data into the bundle instead so no runtime fetch is needed.
+function inlinePhoneData() {
+  const dataDir = path.join(
+    __dirname,
+    "node_modules",
+    "@aduh95/format-phone-number",
+    "data"
+  );
+  const entries = readdirSync(dataDir)
+    .filter((file) => file.endsWith(".json"))
+    .map((file) =>
+      `${JSON.stringify(file.replace(/\.json$/, ""))}: ${readFileSync(
+        path.join(dataDir, file),
+        "utf8"
+      )}`
+    );
+  return {
+    name: "inline-phone-data",
+    resolveId(source) {
+      if (source === "@aduh95/format-phone-number/getCountryData") {
+        return "\0inline-phone-data";
+      }
+    },
+    load(id) {
+      if (id !== "\0inline-phone-data") return;
+      return `const data = { ${entries.join(", ")} };\nexport default (countryCode) => data[countryCode];\n`;
+    },
+  };
+}
 
 function serve() {
   let server;
@@ -74,6 +110,8 @@ export default {
     css({ output: "bundle.css" }),
     json(),
 
+    inlinePhoneData(),
+
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
     // some cases you'll need additional configuration -
@@ -90,14 +128,6 @@ export default {
     typescript({
       sourceMap: !production,
       inlineSources: !production,
-    }),
-    copy({
-      targets: [
-        {
-          src: "node_modules/@aduh95/format-phone-number/data",
-          dest: "public/build",
-        },
-      ],
     }),
 
     // In dev mode, call `npm run start` once

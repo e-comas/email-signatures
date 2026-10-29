@@ -37,7 +37,7 @@ const _ = (html, css) =>
   "#signature { text-align: initial; }\n" +
   "</style>\n" +
   "\n{:catch error}\n" +
-  '<p style="color: red">{error}</p>\n' +
+  '<p style="color: red">{error ? error.message || String(error) : "Unknown error"}</p>\n' +
   "{/await}\n";
 
 process.stdout.write(html`
@@ -211,16 +211,16 @@ process.stdout.write(
                                                         <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 12px; border-collapse: collapse; table-layout: fixed;">
                                                             <tr valign="middle">
                                                                 <td width="25%" align="center" style="padding: 0 8px;">
-                                                                    <img src="https://e-comas.github.io/docs/signatures/ressources/icons/ezy-baby.png" width="75" height="38" style="display: block; width: 75px; height: auto; object-fit: contain; margin: 0 auto;">
+                                                                    <img alt="EZYBaby logo" src="https://e-comas.github.io/docs/signatures/ressources/icons/ezy-baby.png" width="75" height="38" style="display: block; width: 75px; height: auto; object-fit: contain; margin: 0 auto;">
                                                                 </td>
                                                                 <td width="25%" align="center" style="padding: 0 8px;">
-                                                                    <img src="https://e-comas.github.io/docs/signatures/ressources/icons/ezy-pets.png" width="75" height="38" style="display: block; width: 75px; height: auto; object-fit: contain; margin: 0 auto;">
+                                                                    <img alt="EZYPets logo" src="https://e-comas.github.io/docs/signatures/ressources/icons/ezy-pets.png" width="75" height="38" style="display: block; width: 75px; height: auto; object-fit: contain; margin: 0 auto;">
                                                                 </td>
                                                                 <td width="25%" align="center" style="padding: 0 8px;">
-                                                                    <img src="https://e-comas.github.io/docs/signatures/ressources/icons/ezy-living.png" width="75" height="38" style="display: block; width: 75px; height: auto; object-fit: contain; margin: 0 auto;">
+                                                                    <img alt="EZYLiving logo" src="https://e-comas.github.io/docs/signatures/ressources/icons/ezy-living.png" width="75" height="38" style="display: block; width: 75px; height: auto; object-fit: contain; margin: 0 auto;">
                                                                 </td>
                                                                 <td width="25%" align="center" style="padding: 0 8px;">
-                                                                    <img src="https://e-comas.github.io/docs/signatures/ressources/icons/ezy-health.png" width="75" height="38" style="display: block; width: 75px; height: auto; object-fit: contain; margin: 0 auto;">
+                                                                    <img alt="EZYHealth&Beauty logo" src="https://e-comas.github.io/docs/signatures/ressources/icons/ezy-health.png" width="75" height="38" style="display: block; width: 75px; height: auto; object-fit: contain; margin: 0 auto;">
                                                                 </td>
                                                                 </tr>
                                                         </table>
