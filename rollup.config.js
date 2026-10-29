@@ -22,13 +22,25 @@ function serve() {
   return {
     writeBundle() {
       if (server) return;
+
+      // Find sirv's CLI script directly (bin.js in sirv 2.x, cli.js in 1.x)
+      // and run it with node — avoids the .bin shims that break on Windows.
+      const fs = require("fs");
+      const path = require("path");
+      const sirvDir = path.join(__dirname, "node_modules", "sirv-cli");
+      const sirvCli = ["bin.js", "cli.js"]
+        .map((name) => path.join(sirvDir, name))
+        .find((p) => fs.existsSync(p));
+
+      if (!sirvCli) {
+        throw new Error(
+          `Could not find sirv CLI in ${sirvDir} (looked for bin.js and cli.js)`
+        );
+      }
+
       server = require("child_process").spawn(
         process.argv0,
-        [
-          require("path").join(__dirname, "node_modules", ".bin", "sirv"),
-          "--dev",
-          "public",
-        ],
+        [sirvCli, "--dev", "public"],
         {
           stdio: ["ignore", "inherit", "inherit"],
           shell: false,
